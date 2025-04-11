@@ -30,19 +30,19 @@ const Home = () => {
       <main className="flex flex-col border border-[#9e9e9e] bg-[#09090b] text-white rounded-lg p-6 shadow-lg backdrop-blur-md">
         {videos.map((video, ind) => (
             <div key={ind} className='flex flex-col relative cursor-pointer'>
-            <div className='relative w-72 rounded-lg mb-2'>
-              <img src={video.thumbnail} className='w-full h-auto rounded-lg' alt="thumbnail" />
-              <div className='absolute bottom-2 right-2 bg-black bg-opacity-10 text-white text-xs px-2 py-1 rounded'>
-                00:{parseInt(video.duration)}
-                {/* //TODO convert time into min:sec format */}
+              <div className='relative w-72 rounded-lg mb-2'>
+                <img src={video.thumbnail} className='w-full h-40 rounded-lg object-cover' alt="thumbnail" />
+                <div className='absolute bottom-2 right-2 bg-black bg-opacity-10 text-white text-xs px-2 py-1 rounded'>
+                  00:{parseInt(video.duration)}
+                  {/* //TODO convert time into min:sec format */}
+                </div>
               </div>
-            </div>
-            <div className='font-semibold'>
-              {video.title}
-            </div>
-            <div className='text-[#d8d8d8] text-sm font-light'>
-              {video.owner}
-            </div>
+              <div className='font-semibold'>
+                {video.title}
+              </div>
+              <div className='text-[#d8d8d8] text-sm font-light'>
+                {video.owner}
+              </div>
             </div>
         ))}
       </main>

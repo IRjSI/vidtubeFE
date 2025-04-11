@@ -21,16 +21,18 @@ const Upload = () => {
                 return;
             }
             formData.append('video', video); 
-            // formData.append('coverImage', coverImage); 
             formData.append('thumbnail', thumbnail);
             formData.append('title', title);
             formData.append('description', description);
+
+            const token = localStorage.getItem('token')
     
             const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/videos/upload-video`,
                 formData,
                 {
                     headers: {
-                        'Content-Type': 'multipart/form-data'       
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${token}`
                     }
                 }
             )
