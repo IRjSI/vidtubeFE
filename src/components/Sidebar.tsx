@@ -24,9 +24,9 @@ const Sidebar = () => {
           {channels.map((channel, index) => (
         <li
           key={index}
-          className="p-2 rounded-xl hover:bg-[#1a1a1a] transition-colors cursor-pointer flex gap-2"
+          className="p-2 rounded-xl hover:bg-[#1a1a1a] transition-colors cursor-pointer flex gap-2 items-center"
         >
-          {channel.channel}
+          <img src={channel.user.avatar} className='w-8 rounded-full' alt="" /> {channel.user.username}
         </li>
           ))}
         </ul>

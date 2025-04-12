@@ -1,3 +1,4 @@
+import GridBackground from '@/utils/GridBackground';
 import axios from 'axios';
 import { ArrowBigUpDash } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
@@ -48,27 +49,7 @@ const Upload = () => {
   return (
     <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
 
-      <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              linear-gradient(45deg, rgba(99, 102, 241, 0.05) 25%, transparent 25%),
-              linear-gradient(-45deg, rgba(99, 102, 241, 0.05) 25%, transparent 25%),
-              linear-gradient(45deg, transparent 75%, rgba(99, 102, 241, 0.05) 75%),
-              linear-gradient(-45deg, transparent 75%, rgba(99, 102, 241, 0.05) 75%)
-            `,
-            backgroundSize: '100px 100px',
-            backgroundPosition: '0 0, 0 50px, 50px -50px, -50px 0px',
-            animation: 'backgroundShift 20s linear infinite',
-          }} />
-        </div>
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px',
-          maskImage: 'radial-gradient(circle at center, black, transparent 80%)'
-        }} />
+      <GridBackground />
 
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-100">
