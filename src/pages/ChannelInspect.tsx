@@ -1,8 +1,41 @@
 import { Chart } from '@/components/Chart'
 import GridBackground from '@/utils/GridBackground'
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 const ChannelInspect = () => {
+  const [subscribers, setSubscribers] = useState(0);
+  const [videos, setVideos] = useState(0);
+  const [name, setName] = useState('');
+  const [coverImage, setCoverImage] = useState<File | null>(null);
+  const [avatar, setAvatar] = useState<File | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/subscription/get-subscribers`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(response => setSubscribers(response.data.data.length))
+
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/videos/get-videos`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(response => setVideos(response.data.data.length))
+    
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/get-user`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(response => {
+        setName(response.data.data.username)
+        setAvatar(response.data.data.avatar)
+        setCoverImage(response.data.data.coverImage)
+      })
+  }, [])
+
   return (
     <div>
       <GridBackground />
@@ -11,11 +44,11 @@ const ChannelInspect = () => {
 
         <div className='border h-full w-full rounded-xl p-4 flex flex-col gap-4 backdrop-blur-lg'>
           <div>
-            <img src="https://timelinecovers.pro/facebook-cover/download/youtube-facebook-cover.jpg" alt="" className='w-full rounded-xl' />
+            <img src={`${coverImage}`} alt="" className='w-full rounded-xl' />
           </div>
           <div className='flex items-center gap-8'>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6SGvshARHJ5GYSH_Kig8-cYNw5rO3nWn7mA&s" alt="" className='rounded-full w-24' />
-            <h1 className='text-2xl font-bold'>Name</h1>
+            <img src={`${avatar}`} alt="" className='rounded-full w-24' />
+            <h1 className='text-2xl font-bold'>{name}</h1>
           </div>
           <div className='bg-[#d8d8d8] p-4 rounded-xl'>
             <p className='text-gray-900 font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet cupiditate veniam esse dolores aspernatur itaque rerum, vero voluptatibus, odit dolor provident temporibus harum neque</p>
@@ -26,7 +59,8 @@ const ChannelInspect = () => {
         <div className='flex flex-col border rounded-xl backdrop-blur-lg w-full p-4 gap-4'>
           <h2 className='text-xl font-semibold'>Channel Statistics</h2>
           {/* <Chart /> */}
-          
+          <p>Subscribers: {subscribers}</p>
+          <p>Videos: {videos}</p>
         </div>
 
       </div>

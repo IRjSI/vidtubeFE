@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Signup from './pages/Signup'
 import ChannelInspect from './pages/ChannelInspect'
 import Upload from './pages/Upload'
+import Tweet from './pages/Tweet'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/upload" element={<Upload />} />
+            <Route path="/tweet" element={<Tweet />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/insights" element={<ChannelInspect />} />
