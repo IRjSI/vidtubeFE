@@ -12,7 +12,7 @@ export const AuthContext = createContext<AuthContextType | null>(null);
 export default function ContextProvider({ children }: { children: ReactElement }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState(null);
-
+        
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
         if (storedToken) {

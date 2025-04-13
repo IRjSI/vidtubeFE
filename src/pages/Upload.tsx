@@ -1,14 +1,17 @@
+import { AuthContext } from '@/context/authContext';
 import GridBackground from '@/utils/GridBackground';
 import axios from 'axios';
 import { ArrowBigUpDash } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Upload = () => {
     const [video, setVideo] = useState<File | null>(null);
     const [thumbnail, setThumbnail] = useState<File | null>(null);
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [description, setDescription] = useState(''); 
+    //@ts-ignore
+    const { token } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -25,8 +28,6 @@ const Upload = () => {
             formData.append('thumbnail', thumbnail);
             formData.append('title', title);
             formData.append('description', description);
-
-            const token = localStorage.getItem('token')
     
             const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/videos/upload-video`,
                 formData,
@@ -47,12 +48,12 @@ const Upload = () => {
       }
 
   return (
-    <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 min-h-screen">
 
       <GridBackground />
 
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-100">
+          <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-100">
             Upload Video
           </h2>
         </div>

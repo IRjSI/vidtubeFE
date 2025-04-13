@@ -1,7 +1,8 @@
 import { Chart } from '@/components/Chart'
+import { AuthContext } from '@/context/authContext';
 import GridBackground from '@/utils/GridBackground'
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 const ChannelInspect = () => {
   const [subscribers, setSubscribers] = useState(0);
@@ -9,9 +10,10 @@ const ChannelInspect = () => {
   const [name, setName] = useState('');
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [avatar, setAvatar] = useState<File | null>(null);
+   //@ts-ignore
+  const { token } = useContext(AuthContext);
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
 
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/subscription/get-subscribers`, {
       headers: {
@@ -33,6 +35,8 @@ const ChannelInspect = () => {
         setName(response.data.data.username)
         setAvatar(response.data.data.avatar)
         setCoverImage(response.data.data.coverImage)
+        console.log(response.data.data);
+        
       })
   }, [])
 
@@ -40,7 +44,7 @@ const ChannelInspect = () => {
     <div>
       <GridBackground />
 
-      <div className='grid grid-cols-[1fr_2fr] gap-5 p-8'>
+      <div className='grid grid-cols-[1fr_2fr] gap-5 p-8 min-h-[95vh]'>
 
         <div className='border h-full w-full rounded-xl p-4 flex flex-col gap-4 backdrop-blur-lg'>
           <div>

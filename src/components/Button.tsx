@@ -20,7 +20,7 @@ const StyledWrapper = styled.div`
   .ui-btn {
     --btn-default-bg: #fff;
     --btn-padding: 15px 20px;
-    --btn-hover-bg: #d8d8d8;
+    --btn-hover-bg: #fff;
     --btn-transition: .3s;
     --btn-letter-spacing: .1rem;
     --btn-animation-duration: 1.2s;

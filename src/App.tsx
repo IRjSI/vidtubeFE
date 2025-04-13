@@ -11,19 +11,17 @@ import Tweet from './pages/Tweet'
 
 function App() {
   return (
-    <div className="bg-[#09090b] text-white w-screen h-screen flex flex-col">
+    <div className="bg-[#09090b] text-white">
       <Header />
       <div>
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/upload" element={<Upload />} />
-            <Route path="/tweet" element={<Tweet />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/insights" element={<ChannelInspect />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/tweet" element={<Tweet />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/insights" element={<ChannelInspect />} />
+        </Routes>
       </div>
     </div>
   )

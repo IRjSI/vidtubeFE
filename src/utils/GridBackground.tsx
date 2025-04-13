@@ -3,7 +3,7 @@ import React from 'react'
 const GridBackground = () => {
   return (
     <div>
-      <div className="absolute inset-0 opacity-10 ">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0" style={{
             backgroundImage: `
               linear-gradient(45deg, rgba(99, 102, 241, 0.05) 25%, transparent 25%),
