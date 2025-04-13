@@ -1,35 +1,60 @@
-import React, { useContext, useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { AuthContext } from "@/context/authContext"
-import { ArrowBigUpDash, LogOut, Plus } from "lucide-react";
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '@/context/authContext';
+import { ArrowBigUpDash, LogOut, Plus } from 'lucide-react';
 
 const Header = () => {
   //@ts-ignore
   const { isLoggedIn, logout } = useContext(AuthContext);
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <div className='flex justify-between items-center text-white text-lg backdrop-blur-md py-2 px-8 rounded-lg z-50 sticky top-0'>
-        <img onClick={() => navigate('/')} src="https://images-platform.99static.com//_is1GO09t56h442BZLWbRgiNgAw=/612x19:1179x586/fit-in/500x500/99designs-contests-attachments/133/133449/attachment_133449824" alt="" className='w-12 rounded-3xl cursor-pointer' />
-        
-        {isLoggedIn ? 
-          (
-            <div className="flex gap-2">
-              <input type="text" placeholder="Search" className="px-2 pl-4 active:outline-0 border border-[#9e9e9e] rounded-4xl w-2/4 bg-[#09090b]" />
-              <Link to={`/tweet`} className="bg-white text-black px-2 py-1 rounded-sm cursor-pointer"><Plus /></Link>
-              <Link to={`/upload`} className="bg-white text-black px-2 py-1 rounded-sm cursor-pointer"><ArrowBigUpDash /></Link>
-              <Link to={`/insights`} className="bg-white text-black px-2 py-1 rounded-sm cursor-pointer">Inspect</Link>
-              <div onClick={logout} className="bg-red-300 text-red-700 border border-red-800 px-2 py-1 rounded-sm cursor-pointer"><LogOut /></div>
-            </div>
-          ) 
-          : 
-          (
-            <Link to={`/login`} className="bg-white text-black px-2 py-1 rounded-sm cursor-pointer">Login</Link>
-          )
-        }
-    </div>
-  )
-}
+    <header className="sticky top-0 z-50 bg-[#0f0f11]/80 backdrop-blur-md shadow-md border-b border-[#222]">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
+        <img
+          onClick={() => navigate('/')}
+          src="https://images-platform.99static.com//_is1GO09t56h442BZLWbRgiNgAw=/612x19:1179x586/fit-in/500x500/99designs-contests-attachments/133/133449/attachment_133449824"
+          alt="Logo"
+          className="w-12 rounded-3xl cursor-pointer hover:opacity-90 transition"
+        />
 
-export default Header
+        {isLoggedIn ? (
+          <div className="flex gap-3 items-center">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-64 text-sm px-4 py-2 rounded-full border border-[#3d3d3d] bg-[#0f0f11] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
+            />
+            <Link to="/tweet" title="Tweet">
+              <button className="bg-white text-black p-2 rounded-md hover:bg-gray-200 transition">
+                <Plus size={18} />
+              </button>
+            </Link>
+            <Link to="/upload" title="Upload">
+              <button className="bg-white text-black p-2 rounded-md hover:bg-gray-200 transition">
+                <ArrowBigUpDash size={18} />
+              </button>
+            </Link>
+            <Link to="/insights" title="Channel Insights">
+              <button className=" text-sm px-4 py-2 rounded-md border border-white/20 hover:bg-white/10 transition">
+                Inspect
+              </button>
+            </Link>
+            <button
+              onClick={logout}
+              className=" text-sm px-4 py-2 rounded-md border transition border-red-500 text-red-500 hover:bg-red-500/10"
+            >
+              <LogOut size={18} />
+            </button>
+          </div>
+        ) : (
+          <Link to="/login">
+            <button className="action-button">Login</button>
+          </Link>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;

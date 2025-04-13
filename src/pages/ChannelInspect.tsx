@@ -14,6 +14,8 @@ const ChannelInspect = () => {
   const { token } = useContext(AuthContext);
 
   useEffect(() => {
+    if (!token) return
+    
 
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/subscription/get-subscribers`, {
       headers: {
@@ -34,24 +36,22 @@ const ChannelInspect = () => {
     }).then(response => {
         setName(response.data.data.username)
         setAvatar(response.data.data.avatar)
-        setCoverImage(response.data.data.coverImage)
-        console.log(response.data.data);
-        
+        setCoverImage(response.data.data.coverImage)        
       })
-  }, [])
+  }, [token])
 
   return (
     <div>
       <GridBackground />
 
-      <div className='grid grid-cols-[1fr_2fr] gap-5 p-8 min-h-[95vh]'>
+      <div className='grid grid-cols-[1fr_2fr] gap-5 p-8 min-h-[75vh]'>
 
-        <div className='border h-full w-full rounded-xl p-4 flex flex-col gap-4 backdrop-blur-lg'>
+        <div className='border border-white/10 bg-white/5 h-full w-full rounded-xl p-4 flex flex-col gap-4 backdrop-blur-lg'>
           <div>
-            <img src={`${coverImage}`} alt="" className='w-full rounded-xl' />
+            <img src={`${coverImage}`} alt="" className='w-full h-40 object-cover rounded-xl' />
           </div>
           <div className='flex items-center gap-8'>
-            <img src={`${avatar}`} alt="" className='rounded-full w-24' />
+            <img src={`${avatar}`} alt="" className='rounded-full w-24 h-24 object-cover' />
             <h1 className='text-2xl font-bold'>{name}</h1>
           </div>
           <div className='bg-[#d8d8d8] p-4 rounded-xl'>
@@ -60,7 +60,7 @@ const ChannelInspect = () => {
           </div>
         </div>
 
-        <div className='flex flex-col border rounded-xl backdrop-blur-lg w-full p-4 gap-4'>
+        <div className='flex flex-col border border-white/10 bg-white/5 rounded-xl backdrop-blur-lg w-full p-4 gap-4'>
           <h2 className='text-xl font-semibold'>Channel Statistics</h2>
           {/* <Chart /> */}
           <p>Subscribers: {subscribers}</p>

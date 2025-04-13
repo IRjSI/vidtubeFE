@@ -48,9 +48,11 @@ const Upload = () => {
       }
 
   return (
-    <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 min-h-screen">
+    <div className="flex flex-1 flex-col justify-center items-center min-h-[75vh]">
 
       <GridBackground />
+
+      <div className='border border-white/10 h-full sm:mx-auto sm:w-full sm:max-w-sm p-4 rounded-xl bg-[#0d0d0e] backdrop-blur-lg'>
 
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-100">
@@ -138,12 +140,13 @@ const Upload = () => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center gap-2 rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center gap-2 rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mb-4"
               >
                 <ArrowBigUpDash /> Upload
               </button>
             </div>
           </form>
+        </div>
         </div>
       </div>
   )
