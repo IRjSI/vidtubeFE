@@ -2,7 +2,7 @@ import { AuthContext } from '@/context/authContext'
 import GridBackground from '@/utils/GridBackground'
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Signup = () => {
     const [coverImage, setCoverImage] = useState<File | null>(null)
@@ -54,135 +54,130 @@ const Signup = () => {
   }
 
   return (
-    <div className="flex flex-1 flex-col justify-center px-6 py-6 lg:px-8 min-h-screen">
+    <div className="relative flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
 
-      <GridBackground />
+  <GridBackground />
 
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-100">
-            Sign up to your account
-          </h2>
-        </div>
+  <div className="w-full max-w-md space-y-8 z-20">
+    <div className="text-center">
+      <h2 className="text-3xl font-bold tracking-tight text-white">Create your account</h2>
+      <p className="mt-2 text-sm text-gray-400">Start your journey in seconds.</p>
+      <Link to={'/login'} className='text-blue-500 mt-2 text-sm text-center'>Already have an account?</Link>
+    </div>
 
-        <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm z-50">
-          <form className="space-y-6" onSubmit={submitHandler}>
-            <div>
-              <label htmlFor="avatar" className="block text-sm/6 font-medium text-gray-100">
-                Avatar
-              </label>
-              <div className="mt-2">
-                <input
-                  onChange={(e) => setAvatar(e.target.files?.[0] || null)}
-                  id="avatar"
-                  name="avatar"
-                  type="file"
-                  required
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label htmlFor="coverImage" className="block text-sm/6 font-medium text-gray-100">
-                Cover Image
-              </label>
-              <div className="mt-2">
-                <input
-                  onChange={(e) => setCoverImage(e.target.files?.[0] || null)}
-                  id="coverImage"
-                  name="coverImage"
-                  type="file"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label htmlFor="username" className="block text-sm/6 font-medium text-gray-100">
-                Username
-              </label>
-              <div className="mt-2">
-                <input
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  id="username"
-                  name="username"
-                  type="text"
-                  required
-                  placeholder='username'
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label htmlFor="fullname" className="block text-sm/6 font-medium text-gray-100">
-                Fullname
-              </label>
-              <div className="mt-2">
-                <input
-                  value={fullname}
-                  onChange={(e) => setFullname(e.target.value)}
-                  id="fullname"
-                  name="fullname"
-                  type="text"
-                  placeholder='fullname'
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-            
-            <div>
-              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-100">
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  placeholder='Email'
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
+    <form className="space-y-6 bg-[#1a1a20] rounded-2xl shadow-lg p-6" onSubmit={submitHandler}>
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm/6 font-medium text-gray-100">
-                  Password
-                </label>
-              </div>
-              <div className="mt-2">
-                <input
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder='Password'
-                  required
-                  autoComplete="current-password"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Sign up
-              </button>
-            </div>
-          </form>
-        </div>
+      {/* Avatar */}
+      <div>
+        <label htmlFor="avatar" className="block text-sm font-medium text-gray-200">
+          Avatar <span className="text-red-500">*</span>
+        </label>
+        <input
+          onChange={(e) => setAvatar(e.target.files?.[0] || null)}
+          id="avatar"
+          name="avatar"
+          type="file"
+          required
+          className="mt-2 w-full rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
       </div>
+
+      {/* Cover Image */}
+      <div>
+        <label htmlFor="coverImage" className="block text-sm font-medium text-gray-200">
+          Cover Image
+        </label>
+        <input
+          onChange={(e) => setCoverImage(e.target.files?.[0] || null)}
+          id="coverImage"
+          name="coverImage"
+          type="file"
+          className="mt-2 w-full rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      {/* Username */}
+      <div>
+        <label htmlFor="username" className="block text-sm font-medium text-gray-200">
+          Username <span className="text-red-500">*</span>
+        </label>
+        <input
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          id="username"
+          name="username"
+          type="text"
+          required
+          placeholder="Enter your username"
+          className="mt-2 w-full rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      {/* Fullname */}
+      <div>
+        <label htmlFor="fullname" className="block text-sm font-medium text-gray-200">
+          Fullname
+        </label>
+        <input
+          value={fullname}
+          onChange={(e) => setFullname(e.target.value)}
+          id="fullname"
+          name="fullname"
+          type="text"
+          placeholder="Your full name"
+          className="mt-2 w-full rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      {/* Email */}
+      <div>
+        <label htmlFor="email" className="block text-sm font-medium text-gray-200">
+          Email address <span className="text-red-500">*</span>
+        </label>
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          id="email"
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          placeholder="your@email.com"
+          className="mt-2 w-full rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      {/* Password */}
+      <div>
+        <label htmlFor="password" className="block text-sm font-medium text-gray-200">
+          Password <span className="text-red-500">*</span>
+        </label>
+        <input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          id="password"
+          name="password"
+          type="password"
+          required
+          placeholder="••••••••"
+          autoComplete="new-password"
+          className="mt-2 w-full rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      {/* Submit Button */}
+      <div>
+        <button
+          type="submit"
+          className="w-full rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        >
+          Sign up
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
   )
 }
 

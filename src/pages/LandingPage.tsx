@@ -22,7 +22,7 @@ const LandingPage = () => {
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.25 }}
-        transition={{ duration: 2, ease: 'easeInOut' }}
+        transition={{ duration: 1, ease: 'easeInOut' }}
       />
 
       <motion.div
@@ -36,7 +36,7 @@ const LandingPage = () => {
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.25 }}
-        transition={{ duration: 2, ease: 'easeInOut', delay: 0.5 }}
+        transition={{ duration: 1, ease: 'easeInOut', delay: 0.5 }}
       />
 
       <h2 className="text-4xl text-gray-300 text-center mt-4">
@@ -79,12 +79,20 @@ const LandingPage = () => {
         transition={{ duration: 1 }}  
       >
         <h2 className="text-3xl font-bold">What Users are Saying</h2>
-        <div className="flex justify-center gap-8 mt-4">
-          <div className="bg-black border border-[#9e9e9e] p-6 rounded-lg text-white">
+        <div className="grid grid-cols-2 justify-center gap-8 mt-4 px-96">
+          <div className="bg-black/10 backdrop-blur-lg border border-[#9e9e9e] p-6 rounded-lg text-white">
             <p>"Vidtube has completely changed the way I share my creativity!"</p>
             <p className="mt-4 text-sm">- Jane Doe, Content Creator</p>
           </div>
-          <div className="bg-black border border-[#9e9e9e] p-6 rounded-lg text-white">
+          <div className="bg-black/10 backdrop-blur-lg border border-[#9e9e9e] p-6 rounded-lg text-white">
+            <p>"I love how easy it is to discover new creators and engage with their content."</p>
+            <p className="mt-4 text-sm">- John Smith, Viewer</p>
+          </div>
+          <div className="bg-black/10 backdrop-blur-lg border border-[#9e9e9e] p-6 rounded-lg text-white">
+            <p>"Vidtube has completely changed the way I share my creativity!"</p>
+            <p className="mt-4 text-sm">- Jane Doe, Content Creator</p>
+          </div>
+          <div className="bg-black/10 backdrop-blur-lg border border-[#9e9e9e] p-6 rounded-lg text-white">
             <p>"I love how easy it is to discover new creators and engage with their content."</p>
             <p className="mt-4 text-sm">- John Smith, Viewer</p>
           </div>

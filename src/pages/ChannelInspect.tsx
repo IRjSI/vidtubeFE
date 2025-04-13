@@ -36,7 +36,7 @@ const ChannelInspect = () => {
     }).then(response => {
         setName(response.data.data.username)
         setAvatar(response.data.data.avatar)
-        setCoverImage(response.data.data.coverImage)        
+        setCoverImage(response.data.data.coverImage !== '' ? response.data.data.coverImage : "https://media.istockphoto.com/id/1253420527/photo/beautiful-bright-blue-clouds-in-a-light-blue-sky-16-9-panoramic-format.jpg?s=612x612&w=0&k=20&c=TP1T5pEc_CY2Nz81cfPhskLjbjpfNLGzHhJd_iovMp0=")        
       })
   }, [token])
 
@@ -46,7 +46,7 @@ const ChannelInspect = () => {
 
       <div className='grid grid-cols-[1fr_2fr] gap-5 p-8 min-h-[75vh]'>
 
-        <div className='border border-white/10 bg-white/5 h-full w-full rounded-xl p-4 flex flex-col gap-4 backdrop-blur-lg'>
+        <div className='border border-white/10 bg-[#0f0f11]/60 h-full w-full rounded-xl p-4 flex flex-col gap-4 backdrop-blur-lg'>
           <div>
             <img src={`${coverImage}`} alt="" className='w-full h-40 object-cover rounded-xl' />
           </div>
@@ -60,7 +60,7 @@ const ChannelInspect = () => {
           </div>
         </div>
 
-        <div className='flex flex-col border border-white/10 bg-white/5 rounded-xl backdrop-blur-lg w-full p-4 gap-4'>
+        <div className='flex flex-col border border-white/10 bg-[#0f0f11]/60 rounded-xl backdrop-blur-lg w-full p-4 gap-4'>
           <h2 className='text-xl font-semibold'>Channel Statistics</h2>
           {/* <Chart /> */}
           <p>Subscribers: {subscribers}</p>

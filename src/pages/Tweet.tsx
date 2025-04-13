@@ -46,8 +46,7 @@ const Tweet = () => {
   };
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center min-h-[75vh]">
-      <GridBackground />
+    <div className="flex flex-1 flex-col items-center justify-center min-h-[95vh] bg-[#0f0f11]/60">
 
       <div className='border border-white/10 h-full sm:mx-auto sm:w-full sm:max-w-sm p-4 rounded-xl bg-[#0d0d0e] backdrop-blur-lg'>
 

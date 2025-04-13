@@ -26,7 +26,7 @@ const Sidebar = () => {
   }, [token]);
 
   return (
-    <aside className="border border-white/10 text-white py-6 px-4 rounded-xl backdrop-blur-xl min-h-[75vh] bg-[#0f0f11]/60 shadow-md flex flex-col">
+    <aside className="text-white py-6 px-4 rounded-xl backdrop-blur-xl min-h-[85vh] bg-[#0f0f11]/60 shadow-md flex flex-col">
       <h1 className="text-xl font-semibold mb-4">Subscriptions</h1>
 
       {channels.length === 0 ? (

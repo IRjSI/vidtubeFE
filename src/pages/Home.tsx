@@ -32,12 +32,12 @@ const Home = () => {
   if (!isLoggedIn) return <LandingPage />;
 
   return (
-    <div className="grid grid-cols-[1fr_5fr] gap-4 mt-6 px-4 min-h-[75vh]">
-      <aside className="bg-[#09090b] rounded-lg shadow-lg overflow-hidden">
+    <div className="grid grid-cols-[1fr_5fr] gap-4 mt-6 px-4 min-h-[85vh]">
+      <aside className="rounded-lg shadow-lg overflow-hidden">
         <Sidebar />
       </aside>
 
-      <main className="bg-[#09090b] text-white p-4 rounded-xl shadow-md">
+      <main className=" text-white p-4 rounded-xl shadow-md bg-[#0f0f11]/60">
         {videos.length === 0 ? (
           <div className="text-gray-400">No videos found.</div>
         ) : (

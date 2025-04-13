@@ -2,7 +2,7 @@ import { AuthContext } from '@/context/authContext'
 import GridBackground from '@/utils/GridBackground'
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -32,18 +32,17 @@ const Login = () => {
   }
 
   return (
-    <div className="flex flex-1 flex-col justify-center px-6 py-6 lg:px-8 min-h-screen">
+    <div className="relative flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
 
       <GridBackground />
 
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-100">
-            Log in to your account
-          </h2>
-        </div>
+      <div className="w-full max-w-md space-y-8 z-20">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white">Login to your Account</h2>
+            <Link to={'/signup'} className='text-blue-500 mt-2 text-sm text-center'>Don't have an account?</Link>
+          </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm z-50">
-          <form className="space-y-6" onSubmit={submitHandler}>
+          <form className="space-y-6 bg-[#1a1a20] rounded-2xl shadow-lg p-6" onSubmit={submitHandler}>
             <div>
               <label htmlFor="email" className="block text-sm/6 font-medium text-gray-100">
                 Username

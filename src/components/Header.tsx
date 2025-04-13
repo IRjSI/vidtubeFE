@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-[#0f0f11]/80 backdrop-blur-md shadow-md border-b border-[#222]">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-1">
         <img
           onClick={() => navigate('/')}
           src="https://images-platform.99static.com//_is1GO09t56h442BZLWbRgiNgAw=/612x19:1179x586/fit-in/500x500/99designs-contests-attachments/133/133449/attachment_133449824"
@@ -48,8 +48,10 @@ const Header = () => {
             </button>
           </div>
         ) : (
-          <Link to="/login">
-            <button className="action-button">Login</button>
+          <Link to="/login" title="Channel Insights">
+            <button className="cursor-pointer text-sm px-4 py-2 rounded-md border border-white/20 hover:bg-white/10 transition">
+              Login
+            </button>
           </Link>
         )}
       </div>
