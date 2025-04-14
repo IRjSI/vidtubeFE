@@ -1,8 +1,7 @@
-import { Chart } from '@/components/Chart'
 import { AuthContext } from '@/context/authContext';
 import GridBackground from '@/utils/GridBackground'
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 const ChannelInspect = () => {
   const [subscribers, setSubscribers] = useState(0);

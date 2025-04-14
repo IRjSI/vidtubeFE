@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import LandingPage from './LandingPage';
 import { AuthContext } from '@/context/authContext';
 import Sidebar from '@/components/Sidebar';

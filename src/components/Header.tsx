@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '@/context/authContext';
-import { ArrowBigUpDash, LogOut, Plus } from 'lucide-react';
+import { ArrowBigUpDash, LogOut, MessageCircle, Plus } from 'lucide-react';
 
 const Header = () => {
   //@ts-ignore
@@ -20,6 +20,11 @@ const Header = () => {
 
         {isLoggedIn ? (
           <div className="flex gap-3 items-center">
+            <Link to="/show-tweets" title="Tweets">
+              <button className="bg-white text-black p-2 rounded-md hover:bg-gray-200 transition">
+                <MessageCircle size={18} />
+              </button>
+            </Link>
             <input
               type="text"
               placeholder="Search..."
