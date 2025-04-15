@@ -3,8 +3,8 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 
 const AllTweets = () => {
-    const [tweets, setTweets] = useState([]);
-    const [myTweets, setMyTweets] = useState([]);
+    const [tweets, setTweets] = useState<any[]>([]);
+    const [myTweets, setMyTweets] = useState<any[]>([]);
     const [whose, setWhose] = useState('all');
     //@ts-ignore
     const { token } = useContext(AuthContext);
@@ -36,7 +36,7 @@ const AllTweets = () => {
 
   return (
     <div>
-        <main className=" text-white p-4 rounded-xl shadow-md bg-[#0f0f11]/60">
+        <main className=" text-white p-4 rounded-xl shadow-md bg-[#0f0f11]/60 h-[90vh]">
         <div className="flex gap-4">
 
             <button onClick={() => setWhose("all")} className="bg-white p-4 rounded-md text-black">
@@ -56,11 +56,11 @@ const AllTweets = () => {
                     {tweets.map((tweet, ind) => {
                     return (
                         <div
-                        key={ind}
-                        className="flex flex-col relative cursor-pointer rounded-lg hover:bg-white/5 transition p-2"
+                            key={ind}
+                            className="flex flex-col relative cursor-pointer rounded-lg bg-[#d8d8d8] text-black transition p-2 h-56 mt-8"
                         >
-                            <div className="relative w-full rounded-lg mb-2">
-                                <div className="absolute bottom-2 right-2 bg-black/80 font-semibold text-white text-xs px-2 py-1 rounded">
+                            <div className="rounded-lg mb-2">
+                                <div className="">
                                     {tweet.content}
                                 </div>
                             </div>
@@ -73,10 +73,10 @@ const AllTweets = () => {
                     {myTweets.map((tweet, ind) => {
                     return (
                         <div
-                        key={ind}
-                        className="flex flex-col relative cursor-pointer rounded-lg hover:bg-white/5 transition p-2"
+                            key={ind}
+                            className="flex flex-col relative cursor-pointer rounded-lg bg-[#d8d8d8] text-black transition p-2 h-56 mt-8"
                         >
-                            <div className="w-full rounded-lg mb-2">
+                            <div className="rounded-lg mb-2 overflow-y-auto no-scrollbar">
                                 <div className="">
                                     {tweet.content}
                                 </div>
