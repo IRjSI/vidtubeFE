@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '@/context/authContext';
-import { ArrowBigUpDash, LogOut, MessageCircle, Plus } from 'lucide-react';
+import { ArrowBigUpDash, LogOut, MessageCircle, PlaySquareIcon, Plus } from 'lucide-react';
 
 const Header = () => {
   //@ts-ignore
@@ -11,12 +11,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-[#0f0f11]/80 backdrop-blur-md shadow-md border-b border-[#222]">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-1">
-        <img
-          onClick={() => navigate('/')}
-          src="https://images-platform.99static.com//_is1GO09t56h442BZLWbRgiNgAw=/612x19:1179x586/fit-in/500x500/99designs-contests-attachments/133/133449/attachment_133449824"
-          alt="Logo"
-          className="w-12 rounded-3xl cursor-pointer hover:opacity-90 transition"
-        />
+        <PlaySquareIcon onClick={() => navigate('/')} className='cursor-pointer' size={48} />
 
         {isLoggedIn ? (
           <div className="flex gap-3 items-center">
