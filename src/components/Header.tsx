@@ -16,13 +16,13 @@ const Header = () => {
 
         {isLoggedIn ? (
           <div className="flex gap-3 items-center">
-            <Link to="/show-tweets" title="Tweets">
+            <Link to="/show-tweets" title="All Tweets">
               <button className="bg-white text-black p-2 rounded-md hover:bg-gray-200 transition">
                 <MessageCircle size={18} />
               </button>
             </Link>
             
-            <Link to="/tweet" title="Tweet">
+            <Link to="/tweet" title="Create Post">
               <button className="bg-white text-black p-2 rounded-md hover:bg-gray-200 transition">
                 <Plus size={18} />
               </button>
@@ -39,6 +39,7 @@ const Header = () => {
             </Link>
             <button
               onClick={logout}
+              title='Logout'
               className=" text-sm px-4 py-2 rounded-md border transition border-red-500 text-red-500 hover:bg-red-500/10"
             >
               <LogOut size={18} />

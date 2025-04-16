@@ -21,6 +21,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState('');
+  const [userNotFound, setUserNotFound] = useState('found');
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
@@ -28,17 +29,18 @@ const Home = () => {
         const lowerCaseUsername = username.toLowerCase();
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/get-user-search/${lowerCaseUsername}`,
             {
-          headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`
-          }
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+              }
             }
         );
             
         if (response.data.success) {
-            console.log(response.data.data[0]);
             // this is how to pass props while navigating (use useLocation hook in that component)
             navigate('/subscribe', { state: { user: response.data.data[0] } });
+        } else {          
+          setUserNotFound('Not found')
         }
     } catch (error) {
       console.log(error);
@@ -66,18 +68,19 @@ const Home = () => {
         <Sidebar />
       </aside>
 
-      <form onSubmit={submitHandler}>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          className="w-64 text-sm px-4 py-2 rounded-full border border-[#3d3d3d] bg-[#0f0f11] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
-          />
-        <button type='submit'><Search /></button>
-      </form>
 
       <main className=" text-white p-4 rounded-xl shadow-md bg-[#0f0f11]/60">
+        <form onSubmit={submitHandler} className='flex items-center gap-1'>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-64 text-sm px-4 py-2 rounded-full border border-[#3d3d3d] bg-[#0f0f11] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
+            />
+          <button type='submit' className='bg-white text-black p-1 rounded-md'><Search /></button>
+          {userNotFound === 'Not found' ? (<p className='text-white'>User not found!</p>) : null}
+        </form>
         {videos.length === 0 ? (
           <div className="text-gray-400">No videos found.</div>
         ) : (
