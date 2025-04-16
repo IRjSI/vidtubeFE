@@ -9,6 +9,7 @@ import ChannelInspect from './pages/ChannelInspect';
 import Upload from './pages/Upload';
 import Tweet from './pages/Tweet';
 import AllTweets from './pages/AllTweets';
+import SubscribeChannel from './pages/SubscribeChannel';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/upload" element={<Upload />} />
+          <Route path="/subscribe" element={<SubscribeChannel />} />
           <Route path="/tweet" element={<Tweet />} />
           <Route path="/show-tweets" element={<AllTweets />} />
           <Route path="/login" element={<Login />} />
