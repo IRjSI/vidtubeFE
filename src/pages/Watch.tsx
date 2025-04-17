@@ -11,6 +11,7 @@ const Watch = () => {
     const { token } = useContext(AuthContext);
     const [video, setVideo] = useState<any | null>(null);
     const [videoLiked, setVideoLiked] = useState(false);
+    const [subState, setSubState] = useState('Subscribe');
 
     const likeVideo = async () => {
         try {
@@ -34,6 +35,18 @@ const Watch = () => {
         }
     };
     
+    const subscribe = async () => {
+        const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/subscription/toggle/${video.owner}`,{},
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+
+        if (response.data.success) {
+            response.data.message === 'Unsubscribed successfully' ? setSubState('Subscribe') : setSubState('Unsubscribe')
+        }
+    }
 
     useEffect(() => {
         //get video by id
@@ -52,6 +65,14 @@ const Watch = () => {
         })
             .then(response => setVideoLiked(response.data.data.message))
             .catch(err => console.log(err))
+
+        // axios.get(`${import.meta.env.VITE_BACKEND_URL}/subscription/get-status/${video.owner}`,{
+        //     headers: {
+        //         Authorization: `Bearer ${token}`
+        //     }
+        // })
+        //     .then(response => setSubState(response.data.data.message ? 'Unsubscribe' : 'Subscribe'))
+        //     .catch(err => console.log(err))
     }, [id, token])
 
     if (!video) {
@@ -80,7 +101,7 @@ const Watch = () => {
             <div className='flex justify-center items-center gap-2'>
                 <img src={video.user[0].avatar} className='w-10 h-10 rounded-full object-cover' alt="" />
                 <p className='text-lg font-semibold'>{video.user[0].username}</p>
-                <p className='text-black bg-white hover:bg-[#d8d8d8] cursor-pointer py-2 px-4 rounded-3xl'>Subscribe</p>
+                <p className={`${subState === "Subscribe" ? "text-black bg-white hover:bg-[#d8d8d8]" : "text-white bg-[#1a1a1d] hover:bg-[#1a1a1d]/90" } cursor-pointer py-2 px-4 rounded-3xl`} onClick={subscribe}>{subState}</p>
             </div>
             <div className='flex gap-2 bg-[#272727] px-4 py-2 rounded-full cursor-pointer'>
                 <button className='cursor-pointer' onClick={likeVideo}><ThumbsUp
