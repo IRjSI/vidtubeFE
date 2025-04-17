@@ -5,7 +5,6 @@ import Sidebar from '@/components/Sidebar';
 import axios from 'axios';
 import { Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import SubscribeChannel from './SubscribeChannel';
 
 // Helper function to format duration from seconds to mm:ss
 const formatDuration = (durationInSeconds: number) => {
@@ -47,6 +46,10 @@ const Home = () => {
     }
   }
 
+  const videoClick = (id: string) => {
+    navigate('/watch', {state: { id: id }})    
+  }
+
   useEffect(() => {
     if (!token) return;    
 
@@ -70,15 +73,15 @@ const Home = () => {
 
 
       <main className=" text-white p-4 rounded-xl shadow-md bg-[#0f0f11]/60">
-        <form onSubmit={submitHandler} className='flex items-center gap-1'>
+        <form onSubmit={submitHandler} className='flex items-center'>
           <input
             type="text"
             placeholder="Search..."
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-64 text-sm px-4 py-2 rounded-full border border-[#3d3d3d] bg-[#0f0f11] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
+            className="w-64 text-sm px-4 py-2 rounded-s-full border border-[#3d3d3d] bg-[#0f0f11] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
             />
-          <button type='submit' className='bg-white text-black p-1 rounded-md'><Search /></button>
+          <button type='submit' className='bg-white text-black p-1 rounded-e-md'><Search size={28} /></button>
           {userNotFound === 'Not found' ? (<p className='text-white'>User not found!</p>) : null}
         </form>
         {videos.length === 0 ? (
@@ -86,6 +89,7 @@ const Home = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 overflow-y-auto no-scrollbar max-h-full">
             {videos.map((video, ind) => {
+              const id = video._id;
               const user = video.user?.[0];
               const username = user?.username || 'Unknown';
               const thumbnail = video.thumbnail || 'https://via.placeholder.com/300x180';
@@ -95,6 +99,7 @@ const Home = () => {
                 <div
                   key={ind}
                   className="flex flex-col relative cursor-pointer rounded-lg hover:bg-white/5 transition p-2"
+                  onClick={() => videoClick(id)}
                 >
                   <div className="relative w-full rounded-lg mb-2">
                     <img

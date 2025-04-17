@@ -10,6 +10,8 @@ import Upload from './pages/Upload';
 import Tweet from './pages/Tweet';
 import AllTweets from './pages/AllTweets';
 import SubscribeChannel from './pages/SubscribeChannel';
+import Watch from './pages/Watch';
+import LikedVideos from './pages/LikedVideos';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/upload" element={<Upload />} />
+          <Route path="/watch" element={<Watch />} />
+          <Route path="/liked-videos" element={<LikedVideos />} />
           <Route path="/subscribe" element={<SubscribeChannel />} />
           <Route path="/tweet" element={<Tweet />} />
           <Route path="/show-tweets" element={<AllTweets />} />
