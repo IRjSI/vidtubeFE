@@ -1,6 +1,6 @@
 import { AuthContext } from '@/context/authContext';
 import axios from 'axios';
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 
 const SubscribeChannel = () => {
@@ -31,6 +31,20 @@ const SubscribeChannel = () => {
       console.log(error);
     }
   }
+
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/subscription/get-status/${user?._id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          }
+        })
+          .then(response => {
+            setSubState(response.data.data.message ? "Unsubscribe" : "Subscribe")
+          })
+          .catch(err => console.log(err))
+  }, [token])
   
   return (
     <main className="flex items-center justify-center h-[85vh]">

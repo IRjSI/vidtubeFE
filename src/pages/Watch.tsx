@@ -26,7 +26,6 @@ const Watch = () => {
     
             if (response.data.success) {                
                 setVideoLiked(response.data.data.videoLiked);
-                //TODO: get the current state of like
             } else {
                 console.error("Failed to like video:", response.data.message);
             }
@@ -46,6 +45,13 @@ const Watch = () => {
             .then(response => setVideo(response.data.data[0]))
             .catch(err => console.log(err))
 
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/likes/video-status/${id}`,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(response => setVideoLiked(response.data.data.message))
+            .catch(err => console.log(err))
     }, [id, token])
 
     if (!video) {
