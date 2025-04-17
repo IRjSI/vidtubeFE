@@ -1,5 +1,4 @@
 import { AuthContext } from '@/context/authContext';
-import GridBackground from '@/utils/GridBackground';
 import axios from 'axios';
 import { ArrowBigUpDash } from 'lucide-react';
 import React, { useContext, useState } from 'react';

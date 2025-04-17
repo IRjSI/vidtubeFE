@@ -1,8 +1,7 @@
 import { AuthContext } from '@/context/authContext';
-import GridBackground from '@/utils/GridBackground';
 import axios from 'axios';
 import { ArrowBigUpDash } from 'lucide-react'
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const Upload = () => {

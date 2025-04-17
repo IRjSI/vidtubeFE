@@ -1,5 +1,4 @@
-import { FanIcon, Icon } from 'lucide-react';
-import React from 'react';
+import { FanIcon } from 'lucide-react';
 
 const FeatureCard = ({ para, title }: {
   para: string,

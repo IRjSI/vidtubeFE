@@ -1,4 +1,3 @@
-import React from 'react'
 import { useLocation } from 'react-router-dom'
 
 const LikedVideos = () => {
@@ -9,6 +8,7 @@ const LikedVideos = () => {
     
   return (
     <div>
+      {/* @ts-ignore */}
       {likes.map((video, ind) => (
         <div key={ind}>
             {video.video}
