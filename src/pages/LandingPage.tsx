@@ -1,15 +1,16 @@
-import FeatureCard from "@/components/FeatureCard"
-import Button from "@/components/Button"
-import { Link } from "react-router-dom"
-import GridBackground from "@/utils/GridBackground"
+import FeatureCard from "@/components/FeatureCard";
+import Button from "@/components/Button";
+import { Link } from "react-router-dom";
+import GridBackground from "@/utils/GridBackground";
 import { motion } from 'framer-motion';
 
 const LandingPage = () => {
   return (
-    <div className='flex flex-col justify-center items-center mt-8 min-h-screen'>
+    <div className="relative flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 mt-8 min-h-screen overflow-x-hidden">
 
       <GridBackground />
 
+      {/* Decorative Background Blobs */}
       <motion.div
         className="bg-purple-500 blur-[150px] rounded-full absolute"
         style={{
@@ -23,7 +24,6 @@ const LandingPage = () => {
         animate={{ opacity: 0.25 }}
         transition={{ duration: 1, ease: 'easeInOut' }}
       />
-
       <motion.div
         className="bg-blue-500 blur-[150px] rounded-full absolute"
         style={{
@@ -38,103 +38,95 @@ const LandingPage = () => {
         transition={{ duration: 1, ease: 'easeInOut', delay: 0.5 }}
       />
 
-      <h2 className="text-4xl text-gray-300 text-center mt-4">
+      {/* Hero Section */}
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-100 text-center mt-8 leading-snug">
         Create, Share, and Connect — Start Your Journey Now!
       </h2>
-      
-        
+
+      {/* Features Section */}
       <motion.div
-        className="flex mt-8 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 w-full max-w-7xl px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-
         <FeatureCard 
           title="Content Sharing" 
           para="Upload and share high-quality videos with ease — let the world see your creativity in motion." 
         />
-
         <FeatureCard 
           title="Micro Posts" 
           para="Stay updated with bite-sized thoughts through tweet-style posts from creators you follow." 
         />
-
         <FeatureCard 
           title="Creator Subscriptions" 
           para="Subscribe to your favorite creators and never miss out on their latest uploads or updates." 
         />
-
         <FeatureCard 
           title="Personalized Feed" 
           para="A tailored content experience showing trending videos and posts aligned with your interests." 
         />
       </motion.div>
 
+      {/* Testimonials Section */}
       <motion.section 
-        className="mt-12 text-center"
+        className="mt-16 w-full max-w-7xl px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}  
+        transition={{ duration: 1 }}
       >
-        <h2 className="text-3xl font-bold">What Users are Saying</h2>
-        <div className="grid grid-cols-2 justify-center gap-8 mt-4 px-96">
-          <div className="bg-black/10 backdrop-blur-lg border border-[#9e9e9e] p-6 rounded-lg text-white">
-            <p>"Vidtube has completely changed the way I share my creativity!"</p>
-            <p className="mt-4 text-sm">- Jane Doe, Content Creator</p>
-          </div>
-          <div className="bg-black/10 backdrop-blur-lg border border-[#9e9e9e] p-6 rounded-lg text-white">
-            <p>"I love how easy it is to discover new creators and engage with their content."</p>
-            <p className="mt-4 text-sm">- John Smith, Viewer</p>
-          </div>
-          <div className="bg-black/10 backdrop-blur-lg border border-[#9e9e9e] p-6 rounded-lg text-white">
-            <p>"Vidtube has completely changed the way I share my creativity!"</p>
-            <p className="mt-4 text-sm">- Jane Doe, Content Creator</p>
-          </div>
-          <div className="bg-black/10 backdrop-blur-lg border border-[#9e9e9e] p-6 rounded-lg text-white">
-            <p>"I love how easy it is to discover new creators and engage with their content."</p>
-            <p className="mt-4 text-sm">- John Smith, Viewer</p>
-          </div>
+        <h2 className="text-3xl font-bold text-center text-white">What Users are Saying</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+          {["Jane Doe", "John Smith", "Jane Doe", "John Smith"].map((user, index) => (
+            <div key={index} className="bg-black/20 backdrop-blur-lg border border-gray-700 p-6 rounded-xl text-white">
+              <p className="italic">"{user === 'Jane Doe' 
+                ? 'Vidtube has completely changed the way I share my creativity!' 
+                : 'I love how easy it is to discover new creators and engage with their content.'}"</p>
+              <p className="mt-4 text-sm font-light">- {user}, {user === 'Jane Doe' ? 'Content Creator' : 'Viewer'}</p>
+            </div>
+          ))}
         </div>
       </motion.section>
 
+      {/* FAQ Section */}
       <motion.section 
-        className="mt-12"
+        className="mt-16 w-full max-w-3xl px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }} 
+        transition={{ duration: 1 }}
       >
-        <h2 className="text-3xl font-bold text-center">Frequently Asked Questions</h2>
-        <div className="mt-4 space-y-4">
+        <h2 className="text-3xl font-bold text-center text-white">Frequently Asked Questions</h2>
+        <div className="mt-6 space-y-4">
           <details className="bg-gray-800 p-4 rounded-lg backdrop-blur-md">
-            <summary className="text-white font-semibold">How do I upload a video?</summary>
+            <summary className="text-white font-semibold cursor-pointer">How do I upload a video?</summary>
             <p className="text-gray-300 mt-2">Simply click on the upload button at the top of your dashboard to get started!</p>
           </details>
           <details className="bg-gray-800 p-4 rounded-lg backdrop-blur-md">
-            <summary className="text-white font-semibold">Is Vidtube free?</summary>
+            <summary className="text-white font-semibold cursor-pointer">Is Vidtube free?</summary>
             <p className="text-gray-300 mt-2">Yes! Vidtube is free to use with the option for premium features down the line.</p>
           </details>
         </div>
       </motion.section>
 
-      <section className="mt-8 text-center flex flex-col justify-center items-center">
-        <h2 className="text-xl text-gray-300">Join the community of creators</h2>
+      {/* Call to Action */}
+      <section className="mt-16 text-center">
+        <h2 className="text-2xl sm:text-3xl text-gray-100">Join the community of creators</h2>
         <Link to="/signup">
-          <Button text="Sign Up Now" className="mt-4" />
+          <Button text="Sign Up Now" className="mt-6" />
         </Link>
       </section>
 
-      <footer className="mt-12 p-6">
-        <div className="flex justify-center gap-8 text-gray-300">
+      {/* Footer */}
+      <footer className="mt-16 w-full px-4">
+        <div className="flex flex-wrap justify-center gap-6 text-gray-400">
           <Link to="/about">About Us</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/privacy-policy">Privacy Policy</Link>
         </div>
-        <p className="text-center text-gray-400 mt-4">&copy; 2025 Vidtube. All rights reserved.</p>
+        <p className="text-center text-gray-500 mt-4 text-sm">&copy; 2025 Vidtube. All rights reserved.</p>
       </footer>
-
     </div>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;
