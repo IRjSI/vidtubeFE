@@ -3,7 +3,7 @@ import LandingPage from './LandingPage';
 import { AuthContext } from '@/context/authContext';
 import Sidebar from '@/components/Sidebar';
 import axios from 'axios';
-import { Menu, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Helper function to format duration from seconds to mm:ss
