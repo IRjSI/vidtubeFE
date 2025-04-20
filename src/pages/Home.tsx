@@ -3,7 +3,7 @@ import LandingPage from './LandingPage';
 import { AuthContext } from '@/context/authContext';
 import Sidebar from '@/components/Sidebar';
 import axios from 'axios';
-import { Search } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Helper function to format duration from seconds to mm:ss
@@ -36,8 +36,10 @@ const Home = () => {
         );
             
         if (response.data.success) {
-            // this is how to pass props while navigating (use useLocation hook in that component)
-            navigate('/subscribe', { state: { user: response.data.data[0] } });
+          console.log(response.data.data);
+          
+          // this is how to pass props while navigating (use useLocation hook in that component)
+          navigate('/subscribe', { state: { users: response.data.data } });
         } else {          
           setUserNotFound('Not found')
         }
@@ -66,11 +68,10 @@ const Home = () => {
   if (!isLoggedIn) return <LandingPage />;
 
   return (
-    <div className="grid grid-cols-[1fr_5fr] gap-4 mt-6 px-4 min-h-[85vh]">
-      <aside className="rounded-lg shadow-lg overflow-hidden">
+    <div className="grid grid-cols-1 sm:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_5fr] gap-4 mt-6 px-4 min-h-[85vh]">
+      <aside className="rounded-lg shadow-lg overflow-hidden hidden lg:block md:block sm:block">
         <Sidebar />
       </aside>
-
 
       <main className=" text-white p-4 rounded-xl shadow-md bg-[#0f0f11]/60">
         <form onSubmit={submitHandler} className='flex items-center'>
