@@ -18,10 +18,10 @@ const LandingPage = () => {
           width: '300px',
           top: '20%',
           right: '5%',
-          opacity: 0.25,
+          opacity: 0.45,
         }}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.25 }}
+        animate={{ opacity: 0.45 }}
         transition={{ duration: 1, ease: 'easeInOut' }}
       />
       <motion.div
@@ -31,10 +31,10 @@ const LandingPage = () => {
           width: '300px',
           bottom: '15%',
           left: '5%',
-          opacity: 0.25,
+          opacity: 0.45,
         }}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.25 }}
+        animate={{ opacity: 0.45 }}
         transition={{ duration: 1, ease: 'easeInOut', delay: 0.5 }}
       />
 
@@ -109,7 +109,7 @@ const LandingPage = () => {
       </motion.section>
 
       {/* Call to Action */}
-      <section className="mt-16 text-center">
+      <section className="mt-16 flex flex-col justify-center items-center">
         <h2 className="text-2xl sm:text-3xl text-gray-100">Join the community of creators</h2>
         <Link to="/signup">
           <Button text="Sign Up Now" className="mt-6" />
@@ -117,11 +117,11 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="mt-16 w-full px-4">
+      <footer className="mt-16 w-full px-4 z-10">
         <div className="flex flex-wrap justify-center gap-6 text-gray-400">
-          <Link to="/about">About Us</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/about" className="cursor-pointer">About Us</Link>
+          <Link to="/contact" className="cursor-pointer">Contact</Link>
+          <Link to="/privacy-policy" className="cursor-pointer">Privacy Policy</Link>
         </div>
         <p className="text-center text-gray-500 mt-4 text-sm">&copy; 2025 Vidtube. All rights reserved.</p>
       </footer>
