@@ -1,6 +1,6 @@
 import { AuthContext } from "@/context/authContext";
 import axios from "axios";
-import { PencilIcon, Trash2, X } from "lucide-react";
+import { PenBox, Trash2, X } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 
 const AllTweets = () => {
@@ -115,7 +115,6 @@ const AllTweets = () => {
                             className="flex flex-col relative cursor-pointer rounded-lg bg-[#d8d8d8] text-black transition p-2 h-44 mt-8"
                         >
                             <div className="rounded-lg mb-2 overflow-y-auto no-scrollbar">
-                                <Trash2 className="absolute right-0 text-red-700" />
                                 <div className="">
                                     {tweet.content}
                                 </div>
@@ -147,8 +146,8 @@ const AllTweets = () => {
                                 </div>
                             ) : (
                                 <div className="rounded-lg mb-2 overflow-y-auto no-scrollbar">
-                                    <PencilIcon className="absolute right-8 text-blue-700" onClick={() => showForm(tweet._id, tweet.content)}/>
-                                    <Trash2 className="absolute right-0 text-red-700" onClick={() => deleteTweet(tweet._id)} />
+                                    <PenBox size={18} className="absolute right-8 text-blue-700" onClick={() => showForm(tweet._id, tweet.content)}/>
+                                    <Trash2 size={18} className="mr-2 absolute right-0 text-red-700" onClick={() => deleteTweet(tweet._id)} />
                                     <div className="">
                                         {tweet.content}
                                     </div>

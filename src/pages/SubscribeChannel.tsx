@@ -8,7 +8,11 @@ const SubscribeChannel = () => {
   const users = location.state?.users;
   //@ts-ignore
   const { token } = useContext(AuthContext);
-  const [subState, setSubState] = useState('Subscribe');
+
+  interface subStateType {
+    [userId: string]: 'Unsubscribe' | 'Subscribe'
+  }
+  const [subState, setSubState] = useState<subStateType>({});
 
   const onClickHandler = async (user: any) => {
     try {
@@ -19,13 +23,13 @@ const SubscribeChannel = () => {
             Authorization: `Bearer ${token}`
           }
         }
-      );
+      );      
           
       if (response.data.success) {
         if (response.data.message === "can't subscribe yourself") {
           return
         }
-        response.data.message === 'Unsubscribed successfully' ? setSubState('Subscribe') : setSubState('Unsubscribe')
+        setSubState(prev => ({...prev, [user._id]: response.data.message === 'Unsubscribed successfully' ? 'Subscribe' : 'Unsubscribe'}))
       }
     } catch (error) {
       console.log(error);
@@ -33,7 +37,8 @@ const SubscribeChannel = () => {
   }
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/subscription/get-status/${users[2]?._id}`,
+    //@ts-ignore
+    users.forEach(user => {axios.get(`${import.meta.env.VITE_BACKEND_URL}/subscription/get-status/${user?._id}`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -41,17 +46,18 @@ const SubscribeChannel = () => {
           }
         })
           .then(response => {
-            setSubState(response.data.data.message ? "Unsubscribe" : "Subscribe")
+            setSubState(prev => ({...prev, [user._id]: response.data.data.message ? 'Unsubscribe' : 'Subscribe'}))
           })
           .catch(err => console.log(err))
-  }, [token])
+        })
+  }, [token, users])
   
   return (
-    <main className="flex items-center justify-center h-[85vh]">
-      {users.map((user: any) => (
+    <main className="flex items-center justify-center h-[85vh] gap-6 flex-wrap">
+      {users && users.map((user: any) => (
         <div key={user._id} className='text-white px-24 py-12 rounded-xl shadow-md bg-[#0f0f11]/60'>
           <div className='flex justify-center'>
-            <img src={user.avatar} alt={`${user.username}'s avatar`} className='w-24' />
+            <img src={user.avatar} alt={`${user.username}'s avatar`} className='w-24 h-24' />
           </div>
           <div className='text-center text-2xl font-semibold mt-2'>
             {user.username}
@@ -59,8 +65,8 @@ const SubscribeChannel = () => {
           <div className='text-xl mt-8'>
             <button 
               onClick={() => onClickHandler(user)} 
-              className={`${subState === 'Unsubscribe' ? 'bg-red-500 hover:bg-red-500/90' : 'bg-red-600 hover:bg-red-600/90'} p-2 rounded-md cursor-pointer`}>
-              {subState}
+              className={`${subState[user._id] === 'Unsubscribe' ? 'bg-red-500 hover:bg-red-500/90' : 'bg-red-600 hover:bg-red-600/90'} p-2 rounded-md cursor-pointer`}>
+              {subState[user._id] || 'Subscribe'}
             </button>
           </div>
         </div>
