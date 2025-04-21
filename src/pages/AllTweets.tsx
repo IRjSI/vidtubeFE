@@ -112,7 +112,7 @@ const AllTweets = () => {
                     return (
                         <div
                             key={ind}
-                            className="flex flex-col relative cursor-pointer rounded-lg bg-[#d8d8d8] text-black transition p-2 h-44 mt-8"
+                            className="border-1 border-[#2e2e2f] flex flex-col relative cursor-pointer rounded-lg bg-[#151514] text-white transition p-2 h-44 mt-8"
                         >
                             <div className="rounded-lg mb-2 overflow-y-auto no-scrollbar">
                                 <div className="">
@@ -124,30 +124,30 @@ const AllTweets = () => {
                     })}
                 </div>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 overflow-y-auto no-scrollbar max-h-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 overflow-y-auto no-scrollbar h-[75vh]">
                     {myTweets.map((tweet, ind) => {
                     return (
                         <div
                             key={ind}
-                            className="flex flex-col relative cursor-pointer rounded-lg bg-[#d8d8d8] text-black transition p-2 h-56 mt-8"
+                            className="border-2 border-[#2e2e2f] flex flex-col relative cursor-pointer rounded-lg bg-[#fff]/5 text-white transition p-2 h-56 mt-8"
                         >
                             {editingTweetId === tweet._id ? (
                                 <div className="absolute inset-0 z-10 bg-black/60 backdrop-blur-sm flex justify-center items-center rounded-lg">
                                 <form
                                   onSubmit={(e) => updateTweet(e, tweet._id)}
-                                  className="bg-white text-black p-4 rounded-lg shadow-lg w-full max-w-sm space-y-4"
+                                  className="bg-[#2e2e2f] text-black p-4 rounded-lg shadow-lg w-full max-w-sm space-y-4"
                                 >
-                                  <div className="flex justify-between items-center">
+                                  <div className="flex justify-between items-center text-white">
                                     <h2 className="text-lg font-semibold">Edit Tweet</h2>
                                     <X
-                                      className="text-gray-600 hover:text-red-600 cursor-pointer"
+                                      className="hover:text-red-600 cursor-pointer"
                                       onClick={closeForm}
                                     />
                                   </div>
                                   <textarea
                                     value={updatedContent}
                                     onChange={(e) => setUpdatedContent(e.target.value)}
-                                    className="w-full h-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full h-24 p-2 border border-gray-300 rounded-md focus:outline-none text-white bg-[#585858]"
                                     autoFocus
                                   />
                                   <button
