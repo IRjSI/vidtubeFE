@@ -1,21 +1,35 @@
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { formatDuration } from '@/utils/formatDuration';
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '@/context/authContext';
 
 const LikedVideos = () => {
-    const location = useLocation();
-    const likes = location.state?.likes[0]; // array of liked videos
-    console.log(likes);
-    const videos = likes.video; // array
+  const [videos, setVideos] = useState([]) // array of liked videos
 
-    const navigate = useNavigate();
-    const videoClick = (id: string) => {
-      navigate('/watch', { state: { id: id } });
+  //@ts-ignore
+  const { token } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const videoClick = (id: string) => {
+    navigate('/watch', { state: { id: id } });
   };
-    
+  useEffect(() => {
+
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/likes/all-videos`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    })
+      .then(response => setVideos(response.data.data))
+      .catch(err => console.log(err))
+
+  }, [token])
     return (
       <div className="overflow-y-auto no-scrollbar max-h-full p-4">
           <div className="text-center mb-4">Liked Videos: {videos.length}</div>
-          {videos.map((video: any, ind: number) => {
+          {videos.map((item: any, ind: number) => {
+              const video = item.video; 
               const id = video._id;
               const thumbnail = video.thumbnail || 'https://via.placeholder.com/300x180';
               const duration = formatDuration(parseInt(video.duration || 0));
