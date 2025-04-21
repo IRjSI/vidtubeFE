@@ -132,18 +132,33 @@ const AllTweets = () => {
                             className="flex flex-col relative cursor-pointer rounded-lg bg-[#d8d8d8] text-black transition p-2 h-56 mt-8"
                         >
                             {editingTweetId === tweet._id ? (
-                                <div>
-                                    <X className="absolute right-8 text-blue-700" onClick={closeForm}/>
-                                    <form onSubmit={(e) => updateTweet(e,tweet._id)} className={`flex flex-col justify-center items-center gap-4 absolute backdrop-blur-md text-white`}>
-                                        <textarea 
-                                            value={updatedContent}
-                                            onChange={(e) => setUpdatedContent(e.target.value)}
-                                            className="bg-gray-700 p-4 rounded-md"
-                                            autoFocus
-                                        />
-                                        <button type="submit" className="bg-blue-700 p-2 rounded-md">Update</button>
-                                    </form>
-                                </div>
+                                <div className="absolute inset-0 z-10 bg-black/60 backdrop-blur-sm flex justify-center items-center rounded-lg">
+                                <form
+                                  onSubmit={(e) => updateTweet(e, tweet._id)}
+                                  className="bg-white text-black p-4 rounded-lg shadow-lg w-full max-w-sm space-y-4"
+                                >
+                                  <div className="flex justify-between items-center">
+                                    <h2 className="text-lg font-semibold">Edit Tweet</h2>
+                                    <X
+                                      className="text-gray-600 hover:text-red-600 cursor-pointer"
+                                      onClick={closeForm}
+                                    />
+                                  </div>
+                                  <textarea
+                                    value={updatedContent}
+                                    onChange={(e) => setUpdatedContent(e.target.value)}
+                                    className="w-full h-24 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    autoFocus
+                                  />
+                                  <button
+                                    type="submit"
+                                    className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+                                  >
+                                    Update Tweet
+                                  </button>
+                                </form>
+                              </div>
+                              
                             ) : (
                                 <div className="rounded-lg mb-2 overflow-y-auto no-scrollbar">
                                     <PenBox size={18} className="absolute right-8 text-blue-700" onClick={() => showForm(tweet._id, tweet.content)}/>
