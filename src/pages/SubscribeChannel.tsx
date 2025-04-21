@@ -65,7 +65,7 @@ const SubscribeChannel = () => {
           <div className='text-xl mt-8'>
             <button 
               onClick={() => onClickHandler(user)} 
-              className={`${subState[user._id] === 'Unsubscribe' ? 'bg-red-500 hover:bg-red-500/90' : 'bg-red-600 hover:bg-red-600/90'} p-2 rounded-md cursor-pointer`}>
+              className={`${subState[user._id] === 'Unsubscribe' ? 'border border-red-500 text-red-500 hover:text-white hover:bg-red-500/30' : 'bg-red-600 hover:bg-red-600/90'} p-2 rounded-md cursor-pointer`}>
               {subState[user._id] || 'Subscribe'}
             </button>
           </div>

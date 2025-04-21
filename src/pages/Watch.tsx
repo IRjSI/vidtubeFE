@@ -1,6 +1,6 @@
 import { AuthContext } from '@/context/authContext';
 import axios from 'axios';
-import { ThumbsDown, ThumbsUp } from 'lucide-react';
+import { Loader2, ThumbsDown, ThumbsUp } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
@@ -66,18 +66,11 @@ const Watch = () => {
             .then(response => setVideoLiked(response.data.data.message))
             .catch(err => console.log(err))
 
-        // axios.get(`${import.meta.env.VITE_BACKEND_URL}/subscription/get-status/${video.owner}`,{
-        //     headers: {
-        //         Authorization: `Bearer ${token}`
-        //     }
-        // })
-        //     .then(response => setSubState(response.data.data.message ? 'Unsubscribe' : 'Subscribe'))
-        //     .catch(err => console.log(err))
     }, [id, token])
 
     if (!video) {
         return (
-            <div>Loading...</div>
+            <div className='flex justify-center items-center h-[85vh]'><Loader2 className='animate-spin' size={24} /></div>
         )
     }
 

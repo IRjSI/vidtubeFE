@@ -11,6 +11,7 @@ import AllTweets from './pages/AllTweets';
 import SubscribeChannel from './pages/SubscribeChannel';
 import Watch from './pages/Watch';
 import LikedVideos from './pages/LikedVideos';
+import MyVideos from './pages/MyVideos';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/watch" element={<Watch />} />
+          <Route path="/my-videos" element={<MyVideos />} />
           <Route path="/liked-videos" element={<LikedVideos />} />
           <Route path="/subscribe" element={<SubscribeChannel />} />
           <Route path="/tweet" element={<Tweet />} />

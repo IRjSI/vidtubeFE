@@ -2,15 +2,21 @@ import { AuthContext } from '@/context/authContext';
 import GridBackground from '@/utils/GridBackground'
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const ChannelInspect = () => {
   const [subscribers, setSubscribers] = useState(0);
-  const [videos, setVideos] = useState(0);
   const [name, setName] = useState('');
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [avatar, setAvatar] = useState<File | null>(null);
    //@ts-ignore
   const { token } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const myVideos = () => {
+    navigate('/my-videos')
+  }
 
   useEffect(() => {
     if (!token) return
@@ -21,12 +27,6 @@ const ChannelInspect = () => {
         Authorization: `Bearer ${token}`
       }
     }).then(response => setSubscribers(response.data.data.length))
-
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/videos/get-videos`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then(response => setVideos(response.data.data.length))
     
     axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/get-user`, {
       headers: {
@@ -63,7 +63,7 @@ const ChannelInspect = () => {
           <h2 className='text-xl font-semibold'>Channel Statistics</h2>
           {/* <Chart /> */}
           <p>Subscribers: {subscribers}</p>
-          <p>Videos: {videos}</p>
+          <p onClick={myVideos}>Videos</p>
         </div>
 
       </div>
