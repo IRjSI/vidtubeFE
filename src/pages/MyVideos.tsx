@@ -3,12 +3,7 @@ import axios from "axios";
 import { PenBox, Trash2 } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const formatDuration = (durationInSeconds: number) => {
-    const minutes = Math.floor(durationInSeconds / 60);
-    const seconds = durationInSeconds % 60;
-    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-};
+import { formatDuration } from "@/utils/formatDuration";
 
 const MyVideos = () => {
     const [videos, setVideos] = useState<any[]>([]);
