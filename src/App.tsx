@@ -12,6 +12,7 @@ import SubscribeChannel from './pages/SubscribeChannel';
 import Watch from './pages/Watch';
 import LikedVideos from './pages/LikedVideos';
 import MyVideos from './pages/MyVideos';
+import GoogleAuth from './pages/GoogleLogin';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <div className="">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/auth" element={<GoogleAuth />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/watch" element={<Watch />} />
           <Route path="/my-videos" element={<MyVideos />} />

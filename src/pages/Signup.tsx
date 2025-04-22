@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import GoogleAuth from './GoogleLogin';
 
 const Signup = () => {
   const [coverImage, setCoverImage] = useState<File | null>(null);
@@ -177,6 +178,10 @@ const Signup = () => {
             </button>
             </div>
           </form>
+
+          <div className='border-t border-[#8f97a4]'>
+            <GoogleAuth />
+          </div>
         </motion.div>
       </div>
     </div>

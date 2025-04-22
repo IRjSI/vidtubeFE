@@ -53,7 +53,7 @@ const SubscribeChannel = () => {
   }, [token, users])
   
   return (
-    <main className="flex items-center justify-center h-[85vh] gap-6 flex-wrap">
+    <main className="flex items-center justify-center min-h-[85vh] gap-6 flex-wrap">
       {users && users.map((user: any) => (
         <div key={user._id} className='text-white px-24 py-12 rounded-xl shadow-md bg-[#0f0f11]/60'>
           <div className='flex justify-center'>

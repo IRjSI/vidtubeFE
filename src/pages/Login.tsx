@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import GoogleAuth from './GoogleLogin'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -53,7 +54,6 @@ const Login = () => {
           }}
         ></div>
 
-        {/* Right Side Form */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -131,6 +131,10 @@ const Login = () => {
             <Link to="/signup" className="text-indigo-400 hover:underline">
               Sign up
             </Link>
+          </div>
+
+          <div className='border-t border-[#8f97a4]'>
+            <GoogleAuth />
           </div>
         </motion.div>
       </div>

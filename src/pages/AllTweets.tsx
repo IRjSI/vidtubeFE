@@ -112,7 +112,7 @@ const AllTweets = () => {
                     return (
                         <div
                             key={ind}
-                            className="border-1 border-[#2e2e2f] flex flex-col relative cursor-pointer rounded-lg bg-[#151514] text-white transition p-2 h-44 mt-8"
+                            className="border-2 border-[#2e2e2f] flex flex-col relative cursor-pointer rounded-lg bg-[#151514] text-white transition p-2 h-44 mt-8 items-center"
                         >
                             <div className="rounded-lg mb-2 overflow-y-auto no-scrollbar">
                                 <div className="">
@@ -129,7 +129,7 @@ const AllTweets = () => {
                     return (
                         <div
                             key={ind}
-                            className="border-2 border-[#2e2e2f] flex flex-col relative cursor-pointer rounded-lg bg-[#fff]/5 text-white transition p-2 h-56 mt-8"
+                            className="border-2 border-[#2e2e2f] flex flex-col relative cursor-pointer rounded-lg bg-[#fff]/5 text-white transition p-2 h-56 mt-8 items-center"
                         >
                             {editingTweetId === tweet._id ? (
                                 <div className="absolute inset-0 z-10 bg-black/60 backdrop-blur-sm flex justify-center items-center rounded-lg">
