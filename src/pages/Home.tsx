@@ -3,7 +3,7 @@ import LandingPage from './LandingPage';
 import { AuthContext } from '@/context/authContext';
 import Sidebar from '@/components/Sidebar';
 import axios from 'axios';
-import { Search } from 'lucide-react';
+import { Menu, Search, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Helper function to format duration from seconds to mm:ss
@@ -21,6 +21,7 @@ const Home = () => {
 
   const [username, setUsername] = useState('');
   const [userNotFound, setUserNotFound] = useState('found');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
@@ -74,52 +75,62 @@ const Home = () => {
       </aside>
 
       <main className=" text-white p-4 rounded-xl shadow-md bg-[#0f0f11]/60">
-        <form onSubmit={submitHandler} className='flex items-center'>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="w-64 text-sm px-4 py-2 rounded-s-full border border-[#3d3d3d] bg-[#0f0f11] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
-            />
-          <button type='submit' className='bg-white text-black p-1 rounded-e-md'><Search size={28} /></button>
-          {userNotFound === 'Not found' ? (<p className='text-white'>User not found!</p>) : null}
-        </form>
-        {videos.length === 0 ? (
-          <div className="text-gray-400">No videos found.</div>
+        {!isMenuOpen ? <Menu onClick={() => setIsMenuOpen(true)} className='sm:hidden' /> : <X onClick={() => setIsMenuOpen(false)} />}
+        {isMenuOpen ? (
+          <div>
+            <Sidebar />
+          </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 overflow-y-auto no-scrollbar max-h-full">
-            {videos.map((video, ind) => {
-              const id = video._id;
-              const user = video.user?.[0];
-              const username = user?.username || 'Unknown';
-              const thumbnail = video.thumbnail || 'https://via.placeholder.com/300x180';
-              const duration = formatDuration(parseInt(video.duration || 0));
+          <>
+          <form onSubmit={submitHandler} className='flex items-center'>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-64 text-sm px-4 py-2 rounded-s-full border border-[#3d3d3d] bg-[#0f0f11] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
+              />
+            <button type='submit' className='bg-white text-black p-1 rounded-e-md'><Search size={28} /></button>
+            {userNotFound === 'Not found' ? (<p className='text-white'>User not found!</p>) : null}
+          </form>
+          {videos.length === 0 ? (
+            <div className="text-gray-400">No videos found.</div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 overflow-y-auto no-scrollbar max-h-full">
+              {videos.map((video, ind) => {
+                const id = video._id;
+                const user = video.user?.[0];
+                const username = user?.username || 'Unknown';
+                const thumbnail = video.thumbnail || 'https://via.placeholder.com/300x180';
+                const duration = formatDuration(parseInt(video.duration || 0));
 
-              return (
-                <div
-                  key={ind}
-                  className="flex flex-col relative cursor-pointer rounded-lg hover:bg-white/5 transition p-2"
-                  onClick={() => videoClick(id)}
-                >
-                  <div className="relative w-full rounded-lg mb-2">
-                    <img
-                      src={thumbnail}
-                      className="w-full h-40 rounded-lg object-cover"
-                      alt="thumbnail"
-                    />
-                    <div className="absolute bottom-2 right-2 bg-black/80 font-semibold text-white text-xs px-2 py-1 rounded">
-                      {duration}
+                return (
+                  <div
+                    key={ind}
+                    className="flex flex-col relative cursor-pointer rounded-lg hover:bg-white/5 transition p-2"
+                    onClick={() => videoClick(id)}
+                  >
+                    <div className="relative w-full rounded-lg mb-2">
+                      <img
+                        src={thumbnail}
+                        className="w-full h-40 rounded-lg object-cover"
+                        alt="thumbnail"
+                      />
+                      <div className="absolute bottom-2 right-2 bg-black/80 font-semibold text-white text-xs px-2 py-1 rounded">
+                        {duration}
+                      </div>
                     </div>
+                    <div className="font-semibold mt-1 line-clamp-2 mb-1">{video.title}</div>
+                    <div className="text-[#d8d8d8] text-sm font-light">{username}</div>
+                    <div className="text-[#d8d8d8] text-sm font-light">{video.views} views</div>
                   </div>
-                  <div className="font-semibold mt-1 line-clamp-2 mb-1">{video.title}</div>
-                  <div className="text-[#d8d8d8] text-sm font-light">{username}</div>
-                  <div className="text-[#d8d8d8] text-sm font-light">{video.views} views</div>
-                </div>
-              );
+                );
             })}
           </div>
         )}
+        </>
+        )}
+        
       </main>
     </div>
   );
