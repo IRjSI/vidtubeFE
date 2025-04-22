@@ -86,7 +86,22 @@ const ChannelInspect = () => {
               Videos
             </button>
           </div>
-        </div>
+            <div
+              className='text-4xl font-semibold flex justify-center items-center h-full border border-[#2e2e2f] rounded-md bg-[#2e2e2f]/10'
+              style={{
+                backgroundImage: `
+                  radial-gradient(circle at center, rgba(249, 250, 251, 1) 0%, rgba(249, 250, 251, 0.8) 40%, rgba(249, 250, 251, 0.3) 70%, rgba(249, 250, 251, 0) 100%),
+                  url('data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Ccircle cx=\'1\' cy=\'1\' r=\'1\' fill=\'%23e5e7eb\'/%3E%3C/svg%3E')
+                `,
+                backgroundSize: '20px 20px',
+                backgroundBlendMode: 'multiply',
+              }}
+            >
+              <p className='p-4 border backdrop-blur-md rounded-xl'>
+                More features coming soon...
+              </p>
+            </div>
+          </div>
 
       </div>
     </div>
