@@ -112,7 +112,7 @@ const AllTweets = () => {
                     return (
                         <div
                             key={ind}
-                            className="border-2 border-[#2e2e2f] flex flex-col relative cursor-pointer rounded-lg bg-[#151514] text-white transition p-2 h-44 mt-8 items-center"
+                            className="border-2 border-[#2e2e2f] flex flex-col relative cursor-pointer rounded-lg bg-[#151514] text-white transition p-2 h-44 mt-8 items-center text-2xl"
                         >
                             <div className="rounded-lg mb-2 overflow-y-auto no-scrollbar">
                                 <div className="">
@@ -163,7 +163,7 @@ const AllTweets = () => {
                                 <div className="rounded-lg mb-2 overflow-y-auto no-scrollbar">
                                     <PenBox size={18} className="absolute right-8 text-blue-700" onClick={() => showForm(tweet._id, tweet.content)}/>
                                     <Trash2 size={18} className="mr-2 absolute right-0 text-red-700" onClick={() => deleteTweet(tweet._id)} />
-                                    <div className="">
+                                    <div className="text-xl p-4">
                                         {tweet.content}
                                     </div>
                                 </div>
