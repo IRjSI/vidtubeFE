@@ -1,4 +1,5 @@
 import { createContext, ReactElement, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export type AuthContextType = {
     isLoggedIn: boolean;
@@ -12,6 +13,7 @@ export const AuthContext = createContext<AuthContextType | null>(null);
 export default function ContextProvider({ children }: { children: ReactElement }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useState(null);
+    const navigate = useNavigate();
         
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
@@ -32,7 +34,8 @@ export default function ContextProvider({ children }: { children: ReactElement }
     const logout = () => {
         localStorage.removeItem('token');
         setIsLoggedIn(false);
-        setToken(null)
+        setToken(null);
+        navigate('/');
     }
 
     const contextValue = {
