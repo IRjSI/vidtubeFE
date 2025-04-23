@@ -90,7 +90,7 @@ const Watch = () => {
             {video.title}
         </p>
 
-        <div className='flex items-center justify-between w-1/2'>
+        <div className='flex items-center justify-center sm:justify-between w-1/2'>
             <div className='flex justify-center items-center gap-2'>
                 <img src={video.user[0].avatar} className='w-10 h-10 rounded-full object-cover' alt="" />
                 <p className='text-lg font-semibold'>{video.user[0].username}</p>
