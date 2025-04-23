@@ -133,9 +133,9 @@ const Login = () => {
             </Link>
           </div>
 
-          <div className='border-t border-[#8f97a4]'>
+          {/* <div className='border-t border-[#8f97a4]'>
             <GoogleAuth />
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </div>
