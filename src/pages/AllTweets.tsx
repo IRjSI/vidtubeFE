@@ -91,7 +91,7 @@ const AllTweets = () => {
 
   return (
     <div>
-        <main className=" text-white p-4 rounded-xl shadow-md bg-[#0f0f11]/60 h-[90vh]">
+        <main className=" text-white p-4 rounded-xl shadow-md h-[90vh]">
         <div className="flex gap-4 justify-center">
 
             <button onClick={() => setWhose("all")} className={`${whose === 'all' ? 'bg-gray-300 text-black' : 'bg-white text-black'} px-4 py-2 rounded-md`}>

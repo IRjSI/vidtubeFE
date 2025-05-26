@@ -1,5 +1,4 @@
 import { AuthContext } from '@/context/authContext';
-import GridBackground from '@/utils/GridBackground';
 import axios from 'axios';
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -58,30 +57,42 @@ const Signup = () => {
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-black/90 px-4 py-12 sm:px-6 lg:px-8 overflow-hidden">
-      <GridBackground />
+    <div className="min-h-screen w-full flex bg-white/5 overflow-hidden">
 
-      <div className="relative z-10 grid w-full max-w-6xl grid-cols-1 md:grid-cols-2 items-center shadow-2xl rounded-2xl overflow-hidden bg-[#101014]">
-        {/* Left Side Background Image */}
         <div
-          className="hidden md:block h-full bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1517504734587-2890819debab?q=80&w=1639&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-          }}
-        ></div>
+        className="hidden md:block md:w-1/2 relative bg-cover bg-center min-h-screen"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1517504734587-2890819debab?q=80&w=1639&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
+        
+        <div className="absolute inset-0 flex items-end p-12">
+          <div className="text-white max-w-md">
+            <h3 className="text-3xl font-bold mb-3 opacity-90">Secure Access</h3>
+            <p className="text-white/80">Your trusted platform for seamless authentication and secure access management.</p>
+          </div>
+        </div>
+      </div>
 
+        <div className="w-full md:w-1/2 flex items-center justify-center p-8 lg:p-12 relative">
         {/* Right Side Form */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="w-full max-w-md space-y-8 p-10 text-white"
+          className="w-full max-w-md backdrop-blur-xl p-10"
         >
-          <div className="text-center">
+          <div className="text-center mb-8">
             <h2 className="text-4xl font-extrabold tracking-tight">Create your account</h2>
             <p className="mt-2 text-sm text-gray-400">Start your journey in seconds.</p>
-            <Link to="/login" className="text-indigo-400 hover:underline text-sm mt-2 inline-block">Already have an account?</Link>
+            <div>
+            Already have an account?{' '}
+            <Link to="/login" className="text-indigo-400 hover:underline text-sm mt-2 inline-block">
+              Login
+            </Link>
+            </div>
           </div>
 
           <form className="space-y-6" onSubmit={submitHandler}>
@@ -172,7 +183,7 @@ const Signup = () => {
               <button
               type="submit"
               disabled={loading}
-              className="mt-4 w-full rounded-md bg-indigo-600 px-5 py-2 font-semibold text-white transition hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+              className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
             >
               {loading ? 'Signing up...' : 'Sign Up'}
             </button>
@@ -184,7 +195,7 @@ const Signup = () => {
           </div> */}
         </motion.div>
       </div>
-    </div>
+      </div>
   );
 };
 

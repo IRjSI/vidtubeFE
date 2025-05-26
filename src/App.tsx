@@ -16,7 +16,7 @@ import GoogleAuth from './pages/GoogleLogin';
 
 function App() {
   return (
-    <div className="bg-[#09090b] text-white min-h-screen font-sans">
+    <div className="bg-[#030304] text-white min-h-screen font-sans">
       <Header />
       <div className="">
         <Routes>

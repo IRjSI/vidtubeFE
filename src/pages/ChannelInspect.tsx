@@ -1,5 +1,4 @@
 import { AuthContext } from '@/context/authContext';
-import GridBackground from '@/utils/GridBackground';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -48,7 +47,6 @@ const ChannelInspect = () => {
 
   return (
     <div>
-      <GridBackground />
 
       <div className='grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-5 p-4 sm:p-6 lg:p-8 min-h-[75vh]'>
 

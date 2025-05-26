@@ -1,44 +1,34 @@
 import FeatureCard from "@/components/FeatureCard";
 import Button from "@/components/Button";
 import { Link } from "react-router-dom";
-import GridBackground from "@/utils/GridBackground";
 import { motion } from 'framer-motion';
 
 const LandingPage = () => {
   return (
-    <div className="relative flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 mt-8 min-h-screen overflow-x-hidden">
+    <div className="relative flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 min-h-screen overflow-x-hidden">
 
-      <GridBackground />
+      {/* <GridBackground /> */}
 
       {/* Decorative Background Blobs */}
       <motion.div
-        className="bg-purple-500 blur-[150px] rounded-full absolute"
+        className="bg-[#0b2435] blur-[100px] rounded-full absolute"
         style={{
-          height: '300px',
-          width: '300px',
-          top: '20%',
-          right: '5%',
-          opacity: 0.45,
+          height: '60vw',
+          width: '60vw',
+          minHeight: '400px',
+          minWidth: '400px',
+          maxHeight: '900px',
+          maxWidth: '900px',
+          top: '45%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          opacity: 0.75,
+          zIndex: 0,
         }}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.45 }}
+        animate={{ opacity: 0.75 }}
         transition={{ duration: 1, ease: 'easeInOut' }}
       />
-      <motion.div
-        className="bg-blue-500 blur-[150px] rounded-full absolute"
-        style={{
-          height: '300px',
-          width: '300px',
-          bottom: '15%',
-          left: '5%',
-          opacity: 0.45,
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.45 }}
-        transition={{ duration: 1, ease: 'easeInOut', delay: 0.5 }}
-      />
-
-      {/* Hero Section */}
       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-100 text-center mt-8 leading-snug">
         Create, Share, and Connect — Start Your Journey Now!
       </h2>
@@ -70,7 +60,7 @@ const LandingPage = () => {
 
       {/* Testimonials Section */}
       <motion.section 
-        className="mt-16 w-full max-w-7xl px-4"
+        className="mt-16 w-full max-w-7xl px-4 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -90,7 +80,7 @@ const LandingPage = () => {
 
       {/* FAQ Section */}
       <motion.section 
-        className="mt-16 w-full max-w-3xl px-4"
+        className="mt-16 w-full max-w-3xl px-4 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -109,7 +99,7 @@ const LandingPage = () => {
       </motion.section>
 
       {/* Call to Action */}
-      <section className="mt-16 flex flex-col justify-center items-center">
+      <section className="mt-16 flex flex-col justify-center items-center z-10">
         <h2 className="text-2xl sm:text-3xl text-gray-100">Join the community of creators</h2>
         <Link to="/signup">
           <Button text="Sign Up Now" className="mt-6" />
