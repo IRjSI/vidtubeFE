@@ -67,7 +67,7 @@ const Sidebar = () => {
             })}
           </ul>
           <div className='border-t'>
-            <p className='p-2 rounded-lg hover:bg-white/10 transition flex items-center gap-3 cursor-pointer mt-2' onClick={getLikedVideos}>Liked videos</p>
+            <p className='p-2 rounded-lg transition flex items-center gap-3 cursor-pointer mt-2 text-xl font-semibold hover:text-white/90' onClick={getLikedVideos}>Liked videos</p>
           </div>
         </div>
       )}
