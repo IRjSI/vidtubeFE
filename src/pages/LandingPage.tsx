@@ -87,11 +87,11 @@ const LandingPage = () => {
       >
         <h2 className="text-3xl font-bold text-center text-white">Frequently Asked Questions</h2>
         <div className="mt-6 space-y-4">
-          <details className="bg-gray-800 p-4 rounded-lg backdrop-blur-md">
+          <details className="bg-[#102b3d] border-1 border-white/10 p-4 rounded-lg backdrop-blur-md">
             <summary className="text-white font-semibold cursor-pointer">How do I upload a video?</summary>
             <p className="text-gray-300 mt-2">Simply click on the upload button at the top of your dashboard to get started!</p>
           </details>
-          <details className="bg-gray-800 p-4 rounded-lg backdrop-blur-md">
+          <details className="bg-[#102b3d] border-1 border-white/10 p-4 rounded-lg backdrop-blur-md">
             <summary className="text-white font-semibold cursor-pointer">Is Vidtube free?</summary>
             <p className="text-gray-300 mt-2">Yes! Vidtube is free to use with the option for premium features down the line.</p>
           </details>

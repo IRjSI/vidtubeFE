@@ -36,9 +36,7 @@ const Home = () => {
             }
         );
             
-        if (response.data.success) {
-          console.log(response.data.data);
-          
+        if (response.data.success) {          
           // this is how to pass props while navigating (use useLocation hook in that component)
           navigate('/subscribe', { state: { users: response.data.data } });
         } else {          
