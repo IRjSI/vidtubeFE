@@ -1,8 +1,9 @@
 import { AuthContext } from '@/context/authContext';
 import axios from 'axios';
 import { Loader2, ThumbsDown, ThumbsUp } from 'lucide-react';
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import Comments from './Comments';
 
 const Watch = () => {
     const location = useLocation();
@@ -11,7 +12,7 @@ const Watch = () => {
     const { token } = useContext(AuthContext);
     const [video, setVideo] = useState<any | null>(null);
     const [videoLiked, setVideoLiked] = useState(false);
-    // const [subState, setSubState] = useState('Subscribe');
+    
 
     const likeVideo = async () => {
         try {
@@ -110,6 +111,12 @@ const Watch = () => {
             <p className="text-base leading-relaxed">
                 {video.description}
             </p>
+        </div>
+
+        {/* Comment Section */}
+
+        <div>
+            <Comments videoId={id} />
         </div>
     </div>
 

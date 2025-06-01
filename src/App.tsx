@@ -13,14 +13,16 @@ import Watch from './pages/Watch';
 import LikedVideos from './pages/LikedVideos';
 import MyVideos from './pages/MyVideos';
 import GoogleAuth from './pages/GoogleLogin';
+import About from './pages/About';
 
 function App() {
   return (
-    <div className="bg-[#030304] text-white min-h-screen font-sans">
+    <div className="bg-[#030404] text-white min-h-screen font-sans">
       <Header />
       <div className="">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/auth" element={<GoogleAuth />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/watch" element={<Watch />} />

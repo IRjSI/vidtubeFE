@@ -50,13 +50,6 @@ const Login = () => {
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
-        
-        <div className="absolute inset-0 flex items-end p-12">
-          <div className="text-white max-w-md">
-            <h3 className="text-3xl font-bold mb-3 opacity-90">Secure Access</h3>
-            <p className="text-white/80">Your trusted platform for seamless authentication and secure access management.</p>
-          </div>
-        </div>
       </div>
 
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 lg:p-12 relative">
