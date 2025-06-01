@@ -1,7 +1,7 @@
 import { AuthContext } from '@/context/authContext';
 import axios from 'axios';
 import { Loader2, ThumbsDown, ThumbsUp } from 'lucide-react';
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Comments from './Comments';
 
