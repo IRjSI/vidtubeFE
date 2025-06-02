@@ -78,7 +78,7 @@ const Watch = () => {
   return (
     <div className="grid grid-rows-[auto_auto_auto_auto] gap-4 p-6 md:p-8">
 
-        <div className="w-full h-[65vh] flex items-center justify-center overflow-hidden shadow-lg">
+        <div className="w-full h-[65vh] bg-black flex items-center justify-center overflow-hidden shadow-lg">
             <video
                 src={video.videoFile}
                 className="w-full h-full rounded-lg"

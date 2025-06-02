@@ -88,7 +88,7 @@ const Home = () => {
               onChange={(e) => setUsername(e.target.value)}
               className="w-64 text-sm px-4 py-2 rounded-s-full border border-[#3d3d3d] bg-[#0f0f11] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
               />
-            <button type='submit' className='bg-white text-black p-1 rounded-e-md'><Search size={28} /></button>
+            <button type='submit' className='bg-white text-black p-2 rounded-e-xl'><Search size={20} /></button>
             {userNotFound === 'Not found' ? (<p className='text-white'>User not found!</p>) : null}
           </form>
           {videos.length === 0 ? (

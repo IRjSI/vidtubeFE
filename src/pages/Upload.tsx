@@ -54,7 +54,7 @@ const Upload = () => {
   return (
     <div className="flex flex-1 flex-col justify-center items-center min-h-[95vh]">
 
-      <div className='border border-white/10 h-full sm:mx-auto sm:w-full sm:max-w-sm p-4 rounded-xl backdrop-blur-lg'>
+      <div className='bg-white/5 border border-white/10 h-full sm:mx-auto sm:w-full sm:max-w-sm p-4 rounded-xl backdrop-blur-lg'>
 
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-100">

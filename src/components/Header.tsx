@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '@/context/authContext';
-import { ArrowBigUpDash, LogOut, MessageCircle, PlayIcon, PlaySquareIcon, Plus } from 'lucide-react';
+import { ArrowBigUpDash, LogOut, MessageCircle, PlayIcon, Plus } from 'lucide-react';
 
 const Header = () => {
   //@ts-ignore
@@ -10,9 +10,9 @@ const Header = () => {
   
 
   return (
-    <header className="sticky top-0 z-50 bg-[#030304] backdrop-blur-md shadow-md border-b border-[#222]">
+    <header className="sticky top-0 z-50 bg-transparent backdrop-blur-lg shadow-lg border-b border-slate-900">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
-        <PlayIcon onClick={() => navigate('/')} className='cursor-pointer text-[#7dd3fc]' size={38} />
+        <PlayIcon onClick={() => navigate('/')} className='cursor-pointer text-slate-500' size={38} />
 
         {isLoggedIn ? (
           <div className="flex gap-3 items-center">

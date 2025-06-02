@@ -17,7 +17,7 @@ import About from './pages/About';
 
 function App() {
   return (
-    <div className="bg-[#030404] text-white min-h-screen font-sans">
+    <div className="bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white min-h-screen font-sans">
       <Header />
       <div className="">
         <Routes>

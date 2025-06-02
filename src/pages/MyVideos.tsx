@@ -102,7 +102,7 @@ const MyVideos = () => {
                 return (
                     <div
                         key={ind}
-                        className="grid grid-cols-[2fr_9fr_1fr] gap-4 relative cursor-pointer rounded-lg hover:bg-white/5 transition p-2 mb-2"
+                        className="grid grid-cols-[2fr_9fr_1fr] gap-4 relative cursor-pointer p-6 rounded-xl border border-gray-600/30 hover:bg-white/5 transition mb-2 bg-gradient-to-r from-gray-800/50 to-gray-700/30"
                         onClick={() => videoClick(id)}
                     >
                         <div className="relative rounded-lg mb-2">

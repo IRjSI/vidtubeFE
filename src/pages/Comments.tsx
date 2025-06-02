@@ -107,10 +107,10 @@ function Comments({ videoId }: any  ) {
                             </div>
                             <p>{comment.content}</p>
                             <div className="flex gap-4 mt-2">
-                                <ThumbsUp size={18} />
-                                <ThumbsDown size={18} />
+                                <ThumbsUp size={18} className="cursor-pointer" />
+                                <ThumbsDown size={18} className="cursor-pointer" />
                             </div>
-                            <div className="text-blue-400 font-semibold flex items-center">
+                            <div className="text-blue-400 font-semibold flex items-center cursor-pointer">
                                 <ChevronDown /> replies
                             </div>
                         </div>
