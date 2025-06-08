@@ -83,12 +83,12 @@ const Home = () => {
           <form onSubmit={submitHandler} className='flex items-center'>
             <input
               type="text"
-              placeholder="Search..."
+              placeholder="Search Channel"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-64 text-sm px-4 py-2 rounded-s-full border border-[#3d3d3d] bg-[#0f0f11] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20"
+              className="w-64 text-sm px-4 py-2 rounded-s-full border border-white/10 bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-white/10"
               />
-            <button type='submit' className='bg-white text-black p-2 rounded-e-xl'><Search size={20} /></button>
+            <button type='submit' className='border border-white/10 text-white p-2 rounded-e-xl'><Search size={20} /></button>
             {userNotFound === 'Not found' ? (<p className='text-white'>User not found!</p>) : null}
           </form>
           {videos.length === 0 ? (

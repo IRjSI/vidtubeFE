@@ -12,7 +12,8 @@ const Watch = () => {
     const { token } = useContext(AuthContext);
     const [video, setVideo] = useState<any | null>(null);
     const [videoLiked, setVideoLiked] = useState(false);
-    
+    const [views, setViews] = useState(0);
+    const [watched, setWatched] = useState(false);
 
     const likeVideo = async () => {
         try {
@@ -56,7 +57,26 @@ const Watch = () => {
                 Authorization: `Bearer ${token}`
             }
         })
-            .then(response => setVideo(response.data.data[0]))
+            .then(response => {
+                // console.log(response.data.data[0])
+                setVideo(response.data.data[0])
+            }
+            )
+            .catch(err => console.log(err))
+                    
+        axios.patch(`${import.meta.env.VITE_BACKEND_URL}/videos/inc-view/${id}`, 
+            {
+                watched
+            }, 
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        )
+            .then(response => {
+                setViews(response.data.data.views)
+            })
             .catch(err => console.log(err))
 
         axios.get(`${import.meta.env.VITE_BACKEND_URL}/likes/video-status/${id}`,{
@@ -76,9 +96,9 @@ const Watch = () => {
     }
 
   return (
-    <div className="grid grid-rows-[auto_auto_auto_auto] gap-4 p-6 md:p-8">
+    <div className="grid grid-rows-[auto_auto] gap-4 relative bg-[#000]">
 
-        <div className="w-full h-[65vh] bg-black flex items-center justify-center overflow-hidden shadow-lg">
+        <div className="relative w-screen max-w-none h-[65vh] bg-black flex items-center justify-center overflow-hidden shadow-lg p-0 m-0" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)' }}>
             <video
                 src={video.videoFile}
                 className="w-full h-full rounded-lg"
@@ -86,38 +106,42 @@ const Watch = () => {
                 autoPlay
             ></video>
         </div>
+        
+        <div className='grid grid-rows-[auto_auto_auto] gap-4 px-4 py-2 md:px-4'>
 
-        <p className="text-xl font-semibold text-white">
-            {video.title}
-        </p>
-
-        <div className='flex items-center justify-center sm:justify-between w-1/2'>
-            <div className='flex justify-center items-center gap-2'>
-                <img src={video.user[0].avatar} className='w-10 h-10 rounded-full object-cover' alt="" />
-                <p className='text-lg font-semibold'>{video.user[0].username}</p>
-            </div>
-            <div className='flex gap-2 bg-[#272727] px-4 py-2 rounded-full cursor-pointer'>
-                <button className='cursor-pointer' onClick={likeVideo}><ThumbsUp
-                    fill={videoLiked ? 'currentColor' : 'none'}
-                    stroke="currentColor"
-                /></button>
-                <p className='border-r'></p>
-                <button className='cursor-pointer'><ThumbsDown /></button>
-            </div>
-        </div>
-
-        <div className="flex flex-col gap-2 text-gray-400 bg-[#1a1a1d] p-4 rounded-xl shadow-md">
-            <p className="text-lg font-medium text-white">Description</p>
-            <p className="text-base leading-relaxed">
-                {video.description}
+            {/* title */}
+            <p className="text-xl font-semibold text-white">
+                {video.title}
             </p>
+
+            <div className='flex items-center justify-center sm:justify-between w-1/2'>
+                <div className='flex justify-center items-center gap-2'>
+                    <img src={video.user[0].avatar} className='w-10 h-10 rounded-full object-cover' alt="" />
+                    <p className='text-lg font-semibold'>{video.user[0].username}</p>
+                </div>
+                <div className='flex gap-2 bg-[#272727] px-4 py-2 rounded-full cursor-pointer'>
+                    <button className='cursor-pointer' onClick={likeVideo}><ThumbsUp
+                        fill={videoLiked ? 'currentColor' : 'none'}
+                        stroke="currentColor"
+                        /></button>
+                    <p className='border-r'></p>
+                    <button className='cursor-pointer'><ThumbsDown /></button>
+                </div>
+            </div>
+
+            {/* description */}
+            <div className="flex flex-col gap-2 text-gray-400 bg-[#1a1a1d] p-4 rounded-xl shadow-md">
+                <div className="text-lg font-medium text-white flex gap-2 items-center">Description <p className='text-sm text-gray-400'>{`${views} views`}</p></div>
+                <p className="text-base leading-relaxed">
+                    {video.description}
+                </p>
+            </div>
+
+            {/* Comment Section */}
+        
         </div>
 
-        {/* Comment Section */}
-
-        <div>
             <Comments videoId={id} />
-        </div>
     </div>
 
   )

@@ -1,6 +1,6 @@
 import { AuthContext } from "@/context/authContext";
 import axios from "axios"
-import { ChevronDown, Loader2, ThumbsDown, ThumbsUp } from "lucide-react";
+import { Loader2, ThumbsDown, ThumbsUp } from "lucide-react";
 import { useContext, useEffect, useRef, useState } from "react"
 
 function Comments({ videoId }: any  ) {
@@ -11,7 +11,6 @@ function Comments({ videoId }: any  ) {
 
     const [content, setContent] = useState('');
     // const [subState, setSubState] = useState('Subscribe');
-
 
     const textareaRef = useRef(null);
 
@@ -55,7 +54,6 @@ function Comments({ videoId }: any  ) {
             })
             
             if (response.data.success) {
-                console.log(response.data.data);
                 setComments(response.data.data);
             }
         } catch (error: any) {
@@ -98,20 +96,22 @@ function Comments({ videoId }: any  ) {
                 </div>
 
                 {comments.map((comment) => (
-                    <div className="mb-4 flex gap-4">
-                        <img src={comment.owner.avatar} className="rounded-full w-10 h-10" />
-                        
+                    <div key={comment._id} className="mb-4 flex gap-4">
+                        <img src={comment.owner.avatar} className="rounded-full w-10 h-10" alt="avatar" />
                         <div>
                             <div className="text-md font-semibold">
                                 <p>{comment.owner.username}</p>
                             </div>
                             <p>{comment.content}</p>
                             <div className="flex gap-4 mt-2">
-                                <ThumbsUp size={18} className="cursor-pointer" />
-                                <ThumbsDown size={18} className="cursor-pointer" />
-                            </div>
-                            <div className="text-blue-400 font-semibold flex items-center cursor-pointer">
-                                <ChevronDown /> replies
+                                <ThumbsUp
+                                    size={18}
+                                    className="cursor-pointer"
+                                />
+                                <ThumbsDown 
+                                    size={18}
+                                    className="cursor-pointer"
+                                />
                             </div>
                         </div>
                     </div>

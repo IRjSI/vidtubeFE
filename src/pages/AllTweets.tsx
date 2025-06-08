@@ -112,7 +112,7 @@ const AllTweets = () => {
                     return (
                         <div
                             key={ind}
-                            className="border-2 border-slate-500 flex flex-col relative cursor-pointer rounded-lg text-white transition p-2 h-44 mt-8 items-center text-2xl"
+                            className="border-2 bg-white/10 border-white/20 flex flex-col relative cursor-pointer rounded-lg text-white transition p-2 h-44 mt-8 items-center text-2xl"
                         >
                             <div className="rounded-lg mb-2 overflow-y-auto no-scrollbar">
                                 <div className="text-base font-medium p-4">

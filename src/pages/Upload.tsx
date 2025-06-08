@@ -1,6 +1,6 @@
 import { AuthContext } from '@/context/authContext';
 import axios from 'axios';
-import { ArrowBigUpDash } from 'lucide-react'
+import { ArrowBigUpDash, Video } from 'lucide-react'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
@@ -52,22 +52,29 @@ const Upload = () => {
       }
 
   return (
-    <div className="flex flex-1 flex-col justify-center items-center min-h-[95vh]">
+    <div className="flex flex-1 flex-col justify-center items-center min-h-[90vh]">
 
-      <div className='bg-white/5 border border-white/10 h-full sm:mx-auto sm:w-full sm:max-w-sm p-4 rounded-xl backdrop-blur-lg'>
+      <div className='w-full max-w-2xl'>
 
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="text-center text-2xl/9 font-bold tracking-tight text-gray-100">
-            Upload Video
-          </h2>
+      <div className="text-center mb-8">
+        <div className='flex items-center gap-3 mb-4'>
+          <div className="p-3 bg-blue-500/20 rounded-full backdrop-blur-sm border border-blue-400/30">
+            <Video className="w-8 h-8 text-blue-400" />
+          </div>
+          <h1 className="text-4xl font-bold text-white">
+            Share Your Views
+          </h1>
         </div>
+      </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm z-50">
+      <div className='bg-white/10 border border-white/20 rounded-2xl backdrop-blur-xl shadow-2xl'>
+
+      <div className="p-8">
           <form className="space-y-6" onSubmit={submitHandler}>
             
             <div className='flex gap-4'>
                 <div>
-                <label htmlFor="video" className="block text-sm/6 font-medium text-gray-100">
+                <label htmlFor="video" className="text-lg font-semibold text-white flex items-center gap-2">
                     Video
                 </label>
                 <div className="mt-2">
@@ -77,13 +84,13 @@ const Upload = () => {
                     name="video"
                     type="file"
                     required
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="w-full px-4 py-3 text-lg bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400/50 transition-all duration-200"
                     />
                 </div>
                 </div>
                 
                 <div>
-                <label htmlFor="thumbnail" className="block text-sm/6 font-medium text-gray-100">
+                <label htmlFor="thumbnail" className="text-lg font-semibold text-white flex items-center gap-2">
                     Thumbnail
                 </label>
                 <div className="mt-2">
@@ -93,18 +100,16 @@ const Upload = () => {
                     name="thumbnail"
                     type="file"
                     required
-                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                    className="w-full px-4 py-3 text-lg bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400/50 transition-all duration-200"
                     />
                 </div>
                 </div>
             </div>
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="title" className="block text-sm/6 font-medium text-gray-100">
+            <div className="space-y-3">
+                <label htmlFor="title" className="text-lg font-semibold text-white flex items-center gap-2">
                   Title
                 </label>
-              </div>
               <div className="mt-2">
                 <input
                   value={title}
@@ -114,17 +119,15 @@ const Upload = () => {
                   type="text"
                   placeholder='title'
                   required
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="w-full px-4 py-3 text-lg bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400/50 transition-all duration-200"
                   />
               </div>
             </div>
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="description" className="block text-sm/6 font-medium text-gray-100">
+            <div className="space-y-3">
+                <label htmlFor="description" className="text-lg font-semibold text-white flex items-center gap-2">
                   Description
                 </label>
-              </div>
               <div className="mt-2">
                 <input
                   value={description}
@@ -134,7 +137,7 @@ const Upload = () => {
                   type="text"
                   placeholder='description'
                   required
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="w-full px-4 py-3 text-lg bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400/50 transition-all duration-200"
                 />
               </div>
             </div>
@@ -148,6 +151,7 @@ const Upload = () => {
               </button>
             </div>
           </form>
+        </div>
         </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '@/context/authContext';
-import { ArrowBigUpDash, LogOut, MessageCircle, PlayIcon, Plus } from 'lucide-react';
+import { LogOut, MessageSquareMore, MessageSquarePlus, PlayIcon, Settings2, Video } from 'lucide-react';
 
 const Header = () => {
   //@ts-ignore
@@ -16,25 +16,25 @@ const Header = () => {
 
         {isLoggedIn ? (
           <div className="flex gap-3 items-center">
-            <Link to="/show-tweets" title="All Tweets">
+            <Link to="/show-tweets" title="Tweets">
               <button className="bg-white text-black p-2 rounded-md hover:bg-gray-200 transition">
-                <MessageCircle size={18} />
+                <MessageSquareMore size={18} />
               </button>
             </Link>
             
             <Link to="/tweet" title="Create Post">
               <button className="bg-white text-black p-2 rounded-md hover:bg-gray-200 transition">
-                <Plus size={18} />
+                <MessageSquarePlus size={18} />
               </button>
             </Link>
             <Link to="/upload" title="Upload">
               <button className="bg-white text-black p-2 rounded-md hover:bg-gray-200 transition">
-                <ArrowBigUpDash size={18} />
+                <Video size={18} />
               </button>
             </Link>
-            <Link to="/insights" title="Channel Insights">
+            <Link to="/insights" title="Studio">
               <button className=" text-sm px-4 py-2 rounded-md border border-white/20 hover:bg-white/10 transition">
-                Inspect
+                <Settings2 size={18} />
               </button>
             </Link>
             <button

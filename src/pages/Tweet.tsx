@@ -1,6 +1,6 @@
 import { AuthContext } from '@/context/authContext';
 import axios from 'axios';
-import { ArrowBigUpDash } from 'lucide-react';
+import { ArrowBigUpDash, MessageSquare } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -45,36 +45,45 @@ const Tweet = () => {
   };
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center min-h-[95vh] bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]">
+    <div className="flex flex-1 flex-col items-center justify-center min-h-[90vh] bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]">
 
-      <div className='bg-white/5 border border-white/10 h-full sm:mx-auto sm:w-full sm:max-w-sm p-4 rounded-xl backdrop-blur-lg'>
+    <div className='w-full max-w-2xl'>
 
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm z-50">
-        <h2 className="text-center text-2xl font-bold tracking-tight text-gray-100">
-          Post tweet
-        </h2>
+      <div className="text-center mb-8">
+        <div className='flex items-center gap-3 mb-4'>
+          <div className="p-3 bg-blue-500/20 rounded-full backdrop-blur-sm border border-blue-400/30">
+            <MessageSquare className="w-8 h-8 text-blue-400" />
+          </div>
+          <h1 className="text-4xl font-bold text-white">
+            Share Your Thoughts
+          </h1>
+        </div>
       </div>
 
-      <div className="mt-10 z-50">
+      <div className='bg-white/10 border border-white/20 rounded-2xl backdrop-blur-xl shadow-2xl'>
+
+      <div className="p-8">
         <form className="space-y-6" onSubmit={submitHandler}>
-          <div>
-            <label htmlFor="content" className="block text-sm font-medium text-gray-100">
-              Content
+          <div className="space-y-3">
+            <label htmlFor="content" className="text-lg font-semibold text-white flex items-center gap-2">
+              Your Tweet
             </label>
-            <textarea
-              id="content"
-              name="content"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder="What's on your mind?"
-              required
-              className="mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 outline outline-gray-300 focus:outline-2 focus:outline-indigo-600 sm:text-sm"
-              />
+            <div className="relative">
+              <textarea
+                id="content"
+                name="content"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                placeholder="What's on your mind? Share your thoughts, ideas, or just say hello..."
+                className="w-full h-32 px-4 py-3 text-lg bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-400/50 transition-all duration-200 resize-none"
+                />
+            </div>
           </div>
 
           {error && (
-            <div className="text-sm text-red-500 font-medium -mt-4">
-              {error}
+            <div className="flex items-center gap-2 p-4 bg-red-500/20 border border-red-400/30 rounded-xl backdrop-blur-sm">
+              <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+              <span className="text-red-300 font-medium">{error}</span>
             </div>
           )}
 
@@ -93,6 +102,7 @@ const Tweet = () => {
         </form>
       </div>
       </div>
+                </div>
     </div>
   );
 };
