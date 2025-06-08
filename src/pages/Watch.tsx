@@ -13,7 +13,7 @@ const Watch = () => {
     const [video, setVideo] = useState<any | null>(null);
     const [videoLiked, setVideoLiked] = useState(false);
     const [views, setViews] = useState(0);
-    const [watched, setWatched] = useState(false);
+    // const [watched, setWatched] = useState(false);
 
     const likeVideo = async () => {
         try {
@@ -65,9 +65,7 @@ const Watch = () => {
             .catch(err => console.log(err))
                     
         axios.patch(`${import.meta.env.VITE_BACKEND_URL}/videos/inc-view/${id}`, 
-            {
-                watched
-            }, 
+            {}, 
             {
                 headers: {
                     Authorization: `Bearer ${token}`
