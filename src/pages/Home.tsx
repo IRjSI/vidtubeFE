@@ -60,7 +60,9 @@ const Home = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setVideos(response.data.data))
+      .then((response) => {
+        setVideos(response.data.data.videos)
+      })
       .catch((error) => console.error('Error fetching videos:', error));
   }, [token]);
 
@@ -72,7 +74,8 @@ const Home = () => {
         <Sidebar />
       </aside>
 
-      <main className=" text-white p-4 rounded-xl shadow-md bg-[#0f0f11]/60">
+      <main className=" text-white p-4 rounded-xl shadow-md bg-black/20">
+
         {!isMenuOpen ? <Menu onClick={() => setIsMenuOpen(true)} className='sm:hidden' /> : <X onClick={() => setIsMenuOpen(false)} />}
         {isMenuOpen ? (
           <div>
@@ -97,7 +100,7 @@ const Home = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 overflow-y-auto no-scrollbar max-h-full">
               {videos.map((video, ind) => {
                 const id = video._id;
-                const user = video.user?.[0];
+                const user = video.owner;
                 const username = user?.username || 'Unknown';
                 const thumbnail = video.thumbnail || 'https://via.placeholder.com/300x180';
                 const duration = formatDuration(parseInt(video.duration || 0));

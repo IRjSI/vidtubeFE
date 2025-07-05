@@ -1,122 +1,313 @@
-import FeatureCard from "@/components/FeatureCard";
-import Button from "@/components/Button";
-import { Link } from "react-router-dom";
-import { motion } from 'framer-motion';
+import { ArrowRight, Bookmark, Play, TrendingUp, User, Users2 } from "lucide-react";
+import { motion } from "framer-motion";
 
-const LandingPage = () => {
+export default function LandingPage() {
   return (
-    <div className="relative flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 min-h-screen overflow-x-hidden">
-
-      {/* <GridBackground /> */}
-
-      {/* Decorative Background Blobs */}
-      <motion.div
-        className="bg-[#0b2435] blur-[100px] rounded-full absolute"
-        style={{
-          height: '60vw',
-          width: '60vw',
-          minHeight: '400px',
-          minWidth: '400px',
-          maxHeight: '900px',
-          maxWidth: '900px',
-          top: '45%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          opacity: 0.75,
-          zIndex: 0,
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.75 }}
-        transition={{ duration: 1, ease: 'easeInOut' }}
-      />
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-100 text-center mt-8 leading-snug">
-        Create, Share, and Connect — Start Your Journey Now!
-      </h2>
-
-      {/* Features Section */}
-      <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 w-full max-w-7xl px-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <FeatureCard 
-          title="Content Sharing" 
-          para="Upload and share high-quality videos with ease — let the world see your creativity in motion." 
-        />
-        <FeatureCard 
-          title="Micro Posts" 
-          para="Stay updated with bite-sized thoughts through tweet-style posts from creators you follow." 
-        />
-        <FeatureCard 
-          title="Creator Subscriptions" 
-          para="Subscribe to your favorite creators and never miss out on their latest uploads or updates." 
-        />
-        <FeatureCard 
-          title="Personalized Feed" 
-          para="A tailored content experience showing trending videos and posts aligned with your interests." 
-        />
-      </motion.div>
-
-      {/* Testimonials Section */}
+    <div>
       <motion.section 
-        className="mt-16 w-full max-w-7xl px-4 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        className="container mx-auto max-w-5xl text-center pt-20 pb-16 px-4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        <h2 className="text-3xl font-bold text-center text-white">What Users are Saying</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-          {["Jane Doe", "John Smith", "Jane Doe", "John Smith"].map((user, index) => (
-            <div key={index} className="bg-black/20 backdrop-blur-lg border border-gray-700 p-6 rounded-xl text-white">
-              <p className="italic">"{user === 'Jane Doe' 
-                ? 'Vidtube has completely changed the way I share my creativity!' 
-                : 'I love how easy it is to discover new creators and engage with their content.'}"</p>
-              <p className="mt-4 text-sm font-light">- {user}, {user === 'Jane Doe' ? 'Content Creator' : 'Viewer'}</p>
+        <motion.h1 
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 leading-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          Elevate your
+          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">Creative vision</span>
+        </motion.h1>
+        <motion.p 
+          className="text-lg sm:text-xl text-gray-400 mb-12 leading-relaxed max-w-3xl mx-auto px-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          Join thousands of creators who trust Vidtube for professional video hosting, community building, and content monetization.
+        </motion.p>
+        <motion.div 
+          className="flex items-center justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <motion.button 
+            className="bg-blue-700 py-3 px-6 sm:py-4 sm:px-8 text-base sm:text-lg text-white rounded-lg flex items-center gap-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get Started <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+          </motion.button>
+        </motion.div>
+      </motion.section>
+
+      <motion.section 
+        className="container mx-auto max-w-5xl text-center pt-20 pb-16 px-4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+      >
+        <motion.h1 
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 leading-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
+          Everything you need to know
+        </motion.h1>
+        <motion.p 
+          className="text-lg sm:text-xl text-gray-400 mb-12 leading-relaxed max-w-3xl mx-auto px-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+        >
+          Professional tools and features designed to help creators build, grow, and monetize their content.
+        </motion.p>
+
+        <div className="flex flex-col space-y-4">
+          <motion.div 
+            className="border border-white/10 rounded-xl bg-white/5 p-6 sm:p-8 flex flex-col items-start"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-blue-500/20 border-blue-600 text-blue-600 p-3 sm:p-4 rounded-xl mb-6">
+              <Play className="w-6 h-6 sm:w-8 sm:h-8"/>
             </div>
-          ))}
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Professional Video Hosting</h3>
+            <p className="text-gray-300 leading-relaxed text-sm sm:text-base text-start">Upload, manage, and share high-quality videos with enterprise-grade infrastructure and global CDN delivery.</p>
+          </motion.div>
+
+          <motion.div 
+            className="border border-white/10 rounded-xl bg-white/5 p-6 sm:p-8 flex flex-col items-start"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 1.6 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-blue-500/20 border-blue-600 text-blue-600 p-3 sm:p-4 rounded-xl mb-6">
+              <Users2 className="w-6 h-6 sm:w-8 sm:h-8"/>
+            </div>
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Creator Community</h3>
+            <p className="text-gray-300 leading-relaxed text-sm sm:text-base text-start">Connect with a vibrant community of content creators and build meaningful relationships with your audience.</p>
+          </motion.div>
+
+          <motion.div 
+            className="border border-white/10 rounded-xl bg-white/5 p-6 sm:p-8 flex flex-col items-start"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 1.8 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-blue-500/20 border-blue-600 text-blue-600 p-3 sm:p-4 rounded-xl mb-6">
+              <Bookmark className="w-6 h-6 sm:w-8 sm:h-8"/>
+            </div>
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Subscriptions</h3>
+            <p className="text-gray-300 leading-relaxed text-sm sm:text-base text-start">Never miss content from your favorite creators with intelligent notifications and personalized recommendations.</p>
+          </motion.div>
+
+          <motion.div 
+            className="border border-white/10 rounded-xl bg-white/5 p-6 sm:p-8 flex flex-col items-start"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 2 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-blue-500/20 border-blue-600 text-blue-600 p-3 sm:p-4 rounded-xl mb-6">
+              <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8"/>
+            </div>
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Analytics & Insights</h3>
+            <p className="text-gray-300 leading-relaxed text-sm sm:text-base text-start">Track your content performance with detailed analytics and gain insights to grow your audience effectively.</p>
+          </motion.div>
         </div>
+
       </motion.section>
 
-      {/* FAQ Section */}
       <motion.section 
-        className="mt-16 w-full max-w-3xl px-4 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        className="container mx-auto max-w-5xl text-center pt-20 pb-16 px-4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 2.2 }}
       >
-        <h2 className="text-3xl font-bold text-center text-white">Frequently Asked Questions</h2>
-        <div className="mt-6 space-y-4">
-          <details className="bg-[#091f2e] border-1 border-white/10 p-4 rounded-lg backdrop-blur-md">
-            <summary className="text-white font-semibold cursor-pointer">How do I upload a video?</summary>
-            <p className="text-gray-300 mt-2">Simply click on the upload button at the top of your dashboard to get started!</p>
-          </details>
-          <details className="bg-[#091f2e] border-1 border-white/10 p-4 rounded-lg backdrop-blur-md">
-            <summary className="text-white font-semibold cursor-pointer">Is Vidtube free?</summary>
-            <p className="text-gray-300 mt-2">Yes! Vidtube is free to use with the option for premium features down the line.</p>
-          </details>
+        <motion.h1 
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 leading-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.4 }}
+        >
+          What users are saying...
+        </motion.h1>
+        <motion.p 
+          className="text-lg sm:text-xl text-gray-400 mb-12 leading-relaxed max-w-3xl mx-auto px-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.6 }}
+        >
+          See what creators and businesses are saying about their experience with Vidtube.
+        </motion.p>
+
+        <div className="flex flex-col space-y-4">
+          
+          <motion.div 
+            className="border border-white/10 rounded-xl bg-white/5 p-6 sm:p-8 flex flex-col items-start"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 2.8 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <p className="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">"Upload, manage, and share high-quality videos with enterprise-grade infrastructure and global CDN delivery."</p>
+            <div className="flex gap-2 items-center justify-center">
+                <User className="w-6 h-6 sm:w-8 sm:h-8" />
+              <div className="flex flex-col items-start">
+                <h3 className="text-base sm:text-lg font-semibold text-white">Professional Video Hosting</h3>
+                <p className="text-gray-400 text-xs sm:text-sm">role</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="border border-white/10 rounded-xl bg-white/5 p-6 sm:p-8 flex flex-col items-start"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 3 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <p className="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">"Upload, manage, and share high-quality videos with enterprise-grade infrastructure and global CDN delivery."</p>
+            <div className="flex gap-2 items-center justify-center">
+                <User className="w-6 h-6 sm:w-8 sm:h-8" />
+              <div className="flex flex-col items-start">
+                <h3 className="text-base sm:text-lg font-semibold text-white">Professional Video Hosting</h3>
+                <p className="text-gray-400 text-xs sm:text-sm">role</p>
+              </div>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="border border-white/10 rounded-xl bg-white/5 p-6 sm:p-8 flex flex-col items-start"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 3.2 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <p className="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">"Upload, manage, and share high-quality videos with enterprise-grade infrastructure and global CDN delivery."</p>
+            <div className="flex gap-2 items-center justify-center">
+                <User className="w-6 h-6 sm:w-8 sm:h-8" />
+              <div className="flex flex-col items-start">
+                <h3 className="text-base sm:text-lg font-semibold text-white">Professional Video Hosting</h3>
+                <p className="text-gray-400 text-xs sm:text-sm">role</p>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
+
       </motion.section>
 
-      {/* Call to Action */}
-      <section className="mt-16 flex flex-col justify-center items-center z-10">
-        <h2 className="text-2xl sm:text-3xl text-gray-100">Join the community of creators</h2>
-        <Link to="/signup">
-          <Button text="Sign Up Now" className="mt-6" />
-        </Link>
-      </section>
+      <motion.section 
+        className="container mx-auto max-w-5xl text-center pt-20 pb-16 px-4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 3.4 }}
+      >
+        <motion.h1 
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 leading-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 3.6 }}
+        >
+          Frequently Asked Questions
+        </motion.h1>
+        <motion.p 
+          className="text-lg sm:text-xl text-gray-400 mb-12 leading-relaxed max-w-3xl mx-auto px-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 3.8 }}
+        >
+          Get answers to common questions about our platform and features.
+        </motion.p>
 
-      {/* Footer */}
-      <footer className="mt-16 w-full px-4 z-10">
-        <div className="flex flex-wrap justify-center gap-6 text-gray-400">
-          <Link to="/about" className="cursor-pointer">About Us</Link>
-          <Link to="/contact" className="cursor-pointer">Contact</Link>
-          <Link to="/privacy-policy" className="cursor-pointer">Privacy Policy</Link>
+        <div className="flex flex-col space-y-4">
+          
+          <motion.div 
+            className="border border-white/10 rounded-xl bg-white/5 p-6 sm:p-8 flex flex-col items-start"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 4 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">How do I get started with Vidtube?</h3>
+            <p className="text-gray-300 leading-relaxed text-start text-sm sm:text-base">Simply create your account and you'll have access to our full suite of creator tools. Upload your first video in minutes with our intuitive interface.</p>
+          </motion.div>
+          
+          <motion.div 
+            className="border border-white/10 rounded-xl bg-white/5 p-6 sm:p-8 flex flex-col items-start"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 4.2 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">What video formats are supported?</h3>
+            <p className="text-gray-300 leading-relaxed text-start text-sm sm:text-base">We support all major video formats including MP4, MOV, AVI, and more. Our platform automatically optimizes your content for the best viewing experience.</p>
+          </motion.div>
+          
+          <motion.div 
+            className="border border-white/10 rounded-xl bg-white/5 p-6 sm:p-8 flex flex-col items-start"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 4.4 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Is there a limit on video uploads?</h3>
+            <p className="text-gray-300 leading-relaxed text-start text-sm sm:text-base">There is no limit on video uploading or posting tweets</p>
+          </motion.div>
+        
         </div>
-        <p className="text-center text-gray-500 mt-4 text-sm">&copy; 2025 Vidtube. All rights reserved.</p>
-      </footer>
-    </div>
-  );
-};
 
-export default LandingPage;
+      </motion.section>
+
+      <motion.section 
+        className="container mx-auto max-w-5xl text-center pt-20 pb-16 px-4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 4.6 }}
+      >
+        <motion.div 
+          className="border border-white/10 rounded-xl bg-gradient-to-br from-blue-600/30 to-violet-600/30 p-6 sm:p-8 flex flex-col items-center space-y-4"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 4.8 }}
+        >
+          <motion.h1 
+            className="text-2xl sm:text-3xl md:text-4xl font-bold"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 5 }}
+          >
+            Ready to start your journey
+          </motion.h1>
+          <motion.p 
+            className="text-gray-300 font-thin text-lg sm:text-xl max-w-3xl px-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 5.2 }}
+          >
+            Join our community of creators and take your content to the next level with professional tools and support.
+          </motion.p>
+          <motion.button 
+            className="bg-blue-700 py-3 px-6 sm:py-4 sm:px-8 text-base sm:text-lg text-white rounded-lg flex items-center gap-2 shadow-md hover:scale-105 transition-all"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 5.4 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Create Account <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+          </motion.button>
+        </motion.div>
+      </motion.section>
+    </div>
+  )
+}

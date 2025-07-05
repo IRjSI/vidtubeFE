@@ -139,7 +139,8 @@ const Watch = () => {
         
         </div>
 
-            <Comments videoId={id} />
+        <Comments videoId={id} />
+        
     </div>
 
   )

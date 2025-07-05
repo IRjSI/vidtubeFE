@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
@@ -16,12 +16,9 @@ import GoogleAuth from './pages/GoogleLogin';
 import About from './pages/About';
 
 function App() {
-  const doNotShowHeader = ['/watch', '/insights'];
-  const location = useLocation();
-  const isHeaderVisible = doNotShowHeader.includes(location.pathname);
 
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white min-h-screen font-sans">
+    <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white min-h-screen font-sans">
       {/* {!isHeaderVisible && <Header />} */}
       <Header />
       <div className="">

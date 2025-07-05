@@ -13,6 +13,8 @@ const SubscribeChannel = () => {
     [userId: string]: 'Unsubscribe' | 'Subscribe'
   }
   const [subState, setSubState] = useState<subStateType>({});
+  const [message, setMessage] = useState<string | null>(null);
+  const [id, setId] = useState<string | null>(null);
 
   const onClickHandler = async (user: any) => {
     try {
@@ -27,6 +29,8 @@ const SubscribeChannel = () => {
           
       if (response.data.success) {
         if (response.data.message === "can't subscribe yourself") {
+          setMessage("Can't subscribe to yourself")
+          setId(user._id)
           return
         }
         setSubState(prev => ({...prev, [user._id]: response.data.message === 'Unsubscribed successfully' ? 'Subscribe' : 'Unsubscribe'}))
@@ -62,7 +66,10 @@ const SubscribeChannel = () => {
           <div className='text-center text-2xl font-semibold mt-2'>
             {user.username}
           </div>
-          <div className='text-xl mt-8'>
+          <div className='text-xl mt-8 flex flex-col items-center space-y-2'>
+            {(user._id === id && message) && (
+              <p className='text-gray-400'>{message}</p>
+            )}
             <button 
               onClick={() => onClickHandler(user)} 
               className={`${subState[user._id] === 'Unsubscribe' ? 'border border-red-500 text-red-500 hover:text-white hover:bg-red-500/30' : 'bg-red-600 hover:bg-red-600/90'} p-2 rounded-md cursor-pointer`}>

@@ -38,13 +38,13 @@ const Sidebar = () => {
   }, [token]);
 
   return (
-    <aside className="text-white py-6 px-4 rounded-xl backdrop-blur-xl min-h-[85vh] bg-[#0f0f11]/60 shadow-md flex flex-col">
+    <aside className="text-white py-6 px-4 rounded-xl backdrop-blur-xl min-h-[85vh] bg-black/20 shadow-md flex flex-col">
       <h1 className="text-xl font-semibold mb-4">Subscriptions</h1>
 
       {channels.length === 0 ? (
         <div className="text-gray-500 text-sm">No channels subscribed.</div>
       ) : (
-        <div className='grid grid-rows-[3fr_1fr] items-center h-full'>
+        <div className='grid grid-rows-[auto_auto] items-center h-full'>
           <ul className="overflow-y-auto max-h-full no-scrollbar space-y-2">
             {channels.map((channel, index) => {
               const user = channel.user?.[0];
