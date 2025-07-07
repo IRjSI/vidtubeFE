@@ -14,6 +14,7 @@ import LikedVideos from './pages/LikedVideos';
 import MyVideos from './pages/MyVideos';
 import GoogleAuth from './pages/GoogleLogin';
 import About from './pages/About';
+import Message from './pages/Message';
 
 function App() {
 
@@ -27,11 +28,12 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/auth" element={<GoogleAuth />} />
           <Route path="/upload" element={<Upload />} />
-          <Route path="/watch" element={<Watch />} />
+          <Route path="/watch/:id" element={<Watch />} />
           <Route path="/my-videos" element={<MyVideos />} />
           <Route path="/liked-videos" element={<LikedVideos />} />
           <Route path="/subscribe" element={<SubscribeChannel />} />
           <Route path="/tweet" element={<Tweet />} />
+          <Route path="/message" element={<Message />} />
           <Route path="/show-tweets" element={<AllTweets />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

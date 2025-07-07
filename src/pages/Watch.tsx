@@ -1,19 +1,27 @@
 import { AuthContext } from '@/context/authContext';
 import axios from 'axios';
-import { Loader2, ThumbsDown, ThumbsUp } from 'lucide-react';
+import { Forward, Loader2, ThumbsDown, ThumbsUp } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+// import { useLocation } from 'react-router-dom'
 import Comments from './Comments';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import toast, { Toaster } from 'react-hot-toast';
+import { useParams } from 'react-router-dom';
 
 const Watch = () => {
-    const location = useLocation();
-    const id = location.state?.id;
+    // const location = useLocation();
+    // const id = location.state?.id;
+    const path = useParams();
+    const id = path.id;
     //@ts-ignore
     const { token } = useContext(AuthContext);
     const [video, setVideo] = useState<any | null>(null);
     const [videoLiked, setVideoLiked] = useState(false);
     const [views, setViews] = useState(0);
+    const [textToCopy, setTextToCopy] = useState(''); // The text you want to copy
     // const [watched, setWatched] = useState(false);
+
+    const notify = () => toast('copied!');
 
     const likeVideo = async () => {
         try {
@@ -36,6 +44,11 @@ const Watch = () => {
             console.error("Error liking video:", error);
         }
     };
+
+    const copyText = () => {
+        setTextToCopy(`http://localhost:5173/watch/${id}`)
+        notify()
+    }
     
     // const subscribe = async () => {
     //     const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/subscription/toggle/${video.owner}`,{},
@@ -112,7 +125,7 @@ const Watch = () => {
                 {video.title}
             </p>
 
-            <div className='flex items-center justify-center sm:justify-between w-1/2'>
+            <div className='flex items-center justify-center sm:justify-between'>
                 <div className='flex justify-center items-center gap-2'>
                     <img src={video.user[0].avatar} className='w-10 h-10 rounded-full object-cover' alt="" />
                     <p className='text-lg font-semibold'>{video.user[0].username}</p>
@@ -124,6 +137,22 @@ const Watch = () => {
                         /></button>
                     <p className='border-r'></p>
                     <button className='cursor-pointer'><ThumbsDown /></button>
+                    <p className='border-r'></p>
+                    <CopyToClipboard text={textToCopy}>
+                        <button onClick={copyText} className='cursor-pointer'><Forward /></button>
+                    </CopyToClipboard>
+                    <Toaster position='bottom-right'     
+                        toastOptions={{
+                            // Define default options
+                            className: '',
+                            duration: 5000,
+                            removeDelay: 1000,
+                            style: {
+                            background: '#363636',
+                            color: '#fff',
+                            }
+                        }}
+                    />
                 </div>
             </div>
 

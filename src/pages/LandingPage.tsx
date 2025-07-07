@@ -1,5 +1,6 @@
 import { ArrowRight, Bookmark, Play, TrendingUp, User, Users2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   return (
@@ -33,13 +34,15 @@ export default function LandingPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <motion.button 
-            className="bg-blue-700 py-3 px-6 sm:py-4 sm:px-8 text-base sm:text-lg text-white rounded-lg flex items-center gap-2"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get Started <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </motion.button>
+          <Link to="/signup">
+            <motion.button 
+              className="bg-blue-700 py-3 px-6 sm:py-4 sm:px-8 text-base sm:text-lg text-white rounded-lg flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              >
+              Get Started <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            </motion.button>
+          </Link>
         </motion.div>
       </motion.section>
 
@@ -296,16 +299,15 @@ export default function LandingPage() {
           >
             Join our community of creators and take your content to the next level with professional tools and support.
           </motion.p>
-          <motion.button 
-            className="bg-blue-700 py-3 px-6 sm:py-4 sm:px-8 text-base sm:text-lg text-white rounded-lg flex items-center gap-2 shadow-md hover:scale-105 transition-all"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 5.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Create Account <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </motion.button>
+          <Link to="/signup">
+            <motion.button 
+              className="bg-blue-700 py-3 px-6 sm:py-4 sm:px-8 text-base sm:text-lg text-white rounded-lg flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              >
+              Create Account <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            </motion.button>
+          </Link>
         </motion.div>
       </motion.section>
     </div>

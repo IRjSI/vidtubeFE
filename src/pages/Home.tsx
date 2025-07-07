@@ -48,7 +48,7 @@ const Home = () => {
   }
 
   const videoClick = (id: string) => {
-    navigate('/watch', {state: { id: id }})    
+    navigate(`/watch/${id}`)    
   }
 
   useEffect(() => {
