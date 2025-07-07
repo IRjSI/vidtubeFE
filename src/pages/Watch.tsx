@@ -2,9 +2,7 @@ import { AuthContext } from '@/context/authContext';
 import axios from 'axios';
 import { Forward, Loader2, ThumbsDown, ThumbsUp } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react'
-// import { useLocation } from 'react-router-dom'
 import Comments from './Comments';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import toast, { Toaster } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 
@@ -18,7 +16,6 @@ const Watch = () => {
     const [video, setVideo] = useState<any | null>(null);
     const [videoLiked, setVideoLiked] = useState(false);
     const [views, setViews] = useState(0);
-    const [textToCopy, setTextToCopy] = useState(''); // The text you want to copy
     // const [watched, setWatched] = useState(false);
 
     const notify = () => toast('copied!');
@@ -45,10 +42,17 @@ const Watch = () => {
         }
     };
 
-    const copyText = () => {
-        setTextToCopy(`http://localhost:5173/watch/${id}`)
-        notify()
-    }
+    const copyText = async () => {
+        const textToCopy = `http://localhost:5173/watch/${id}`;
+
+        try {
+            await navigator.clipboard.writeText(textToCopy);
+            notify();
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+        }
+    };
+
     
     // const subscribe = async () => {
     //     const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/subscription/toggle/${video.owner}`,{},
@@ -138,9 +142,9 @@ const Watch = () => {
                     <p className='border-r'></p>
                     <button className='cursor-pointer'><ThumbsDown /></button>
                     <p className='border-r'></p>
-                    <CopyToClipboard text={textToCopy}>
-                        <button onClick={copyText} className='cursor-pointer'><Forward /></button>
-                    </CopyToClipboard>
+                    
+                    <button onClick={copyText} className='cursor-pointer'><Forward /></button>
+                    
                     <Toaster position='bottom-right'     
                         toastOptions={{
                             // Define default options
