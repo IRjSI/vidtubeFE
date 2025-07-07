@@ -15,6 +15,8 @@ import MyVideos from './pages/MyVideos';
 import GoogleAuth from './pages/GoogleLogin';
 import About from './pages/About';
 import Message from './pages/Message';
+import FindUsers from './pages/FindUsers';
+import AddFriend from './pages/AddFriend';
 
 function App() {
 
@@ -26,12 +28,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/find-users" element={<FindUsers />} />
           <Route path="/auth" element={<GoogleAuth />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/watch/:id" element={<Watch />} />
           <Route path="/my-videos" element={<MyVideos />} />
           <Route path="/liked-videos" element={<LikedVideos />} />
           <Route path="/subscribe" element={<SubscribeChannel />} />
+          <Route path="/add-friend" element={<AddFriend />} />
           <Route path="/tweet" element={<Tweet />} />
           <Route path="/message" element={<Message />} />
           <Route path="/show-tweets" element={<AllTweets />} />
