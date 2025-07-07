@@ -25,7 +25,8 @@ const Message = () => {
         }
     }, [])
 
-    const socket = useMemo(() => io(`${import.meta.env.VITE_FRONTEND_URL}`), []);
+    const socket = useMemo(() => io(`https://vidtube-fe.vercel.app`), []);
+    console.log(import.meta.env.VITE_FRONTEND_URL)
     
     const sendMessage = async (e: any) => {
         e.preventDefault()
