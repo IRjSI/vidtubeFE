@@ -25,7 +25,7 @@ const Message = () => {
         }
     }, [])
 
-    const socket = useMemo(() => io(`${import.meta.env.VITE_BACKEND_URL}`), []);
+    const socket = useMemo(() => io(`${import.meta.env.VITE_BACKEND_URL_WS}`), []);
     
     const sendMessage = async (e: any) => {
         e.preventDefault()
