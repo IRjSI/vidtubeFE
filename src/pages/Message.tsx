@@ -25,7 +25,7 @@ const Message = () => {
         }
     }, [])
 
-    const socket = useMemo(() => io('http://localhost:4000'), []);
+    const socket = useMemo(() => io(`${import.meta.env.VITE_FRONTEND_URL}`), []);
     
     const sendMessage = async (e: any) => {
         e.preventDefault()
