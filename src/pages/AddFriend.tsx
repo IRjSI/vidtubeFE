@@ -61,7 +61,7 @@ const AddFriend = () => {
       {users && users.map((user: any) => (
         <div key={user._id} className='text-white px-24 py-12 rounded-xl shadow-md bg-[#0f0f11]/60'>
           <div className='flex justify-center'>
-            <img src={user.avatar} alt={`${user.username}'s avatar`} className='w-24 h-24' />
+            <img src={user.avatar} alt={`${user.username}'s avatar`} className='w-24 h-24 object-cover' />
           </div>
           <div className='text-center text-2xl font-semibold mt-2'>
             {user.username}
