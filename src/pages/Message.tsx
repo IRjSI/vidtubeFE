@@ -46,7 +46,7 @@ const Message = () => {
                 setError("select friend")
             }
         } catch (error) {
-            
+            console.log(error)
         } finally {
         }
     }

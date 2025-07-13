@@ -43,7 +43,7 @@ const Watch = () => {
     };
 
     const copyText = async () => {
-        const textToCopy = `http://localhost:5173/watch/${id}`;
+        const textToCopy = `${import.meta.env.VITE_FRONTEND_URL}/${id}`;
 
         try {
             await navigator.clipboard.writeText(textToCopy);
@@ -52,7 +52,6 @@ const Watch = () => {
             console.error('Failed to copy: ', err);
         }
     };
-
     
     // const subscribe = async () => {
     //     const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/subscription/toggle/${video.owner}`,{},

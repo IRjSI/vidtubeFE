@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
+      <div></div>
+
       <motion.section 
         className="container mx-auto max-w-5xl text-center pt-20 pb-16 px-4"
         initial={{ opacity: 0, y: 50 }}
