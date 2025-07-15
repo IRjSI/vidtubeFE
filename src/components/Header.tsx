@@ -67,7 +67,11 @@ const Header = () => {
                 <img src={data?.avatar ? data.avatar : "https://static.vecteezy.com/system/resources/thumbnails/036/594/092/small_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg"} alt="prf" className='w-8 h-8 rounded-full object-cover cursor-pointer' />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
-                <DropdownMenuLabel className='flex items-center justify-center'>{data?.username ? data.username : "..."}</DropdownMenuLabel>
+                <DropdownMenuLabel className='flex items-center justify-center'>
+                  <Link to={"/profile"} state={data}>
+                    {data?.username ? data.username : "..."}
+                  </Link>
+                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <Link to="/insights" title="Studio" className='flex gap-2 items-center'>

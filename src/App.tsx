@@ -17,6 +17,7 @@ import About from './pages/About';
 import Message from './pages/Message';
 import FindUsers from './pages/FindUsers';
 import AddFriend from './pages/AddFriend';
+import Profile from './pages/Profile';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <div className="">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
           <Route path="/find-users" element={<FindUsers />} />
           <Route path="/auth" element={<GoogleAuth />} />
