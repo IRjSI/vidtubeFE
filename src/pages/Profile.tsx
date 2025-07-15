@@ -139,7 +139,7 @@ const Profile = () => {
           </div>
 
           {/* profile */}
-          <div className="relative mx-auto max-w-6xl px-4 sm:px6 lg:px-8">
+          <div className="relative mx-auto max-w-6xl px-4 sm:px6 lg:px-8 -mt-24 pb-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* avatar and description */}
               <div className="flex flex-col items-center lg:items-start lg:col-span-1">
@@ -189,20 +189,20 @@ const Profile = () => {
 
               {/* profile info */}
               <div className="lg:col-span-2">
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20">
+                <div className="bg-gradient-to-br from-slate-600 to-slate-800 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h1 className="text-3xl font-bold text-gray-900 mb-2">Profile Settings</h1>
-                      <p className="text-gray-600">Update your account information and preferences</p>
+                      <h1 className="text-3xl font-bold mb-2">Profile Settings</h1>
+                      <p className="text-gray-50">Update your account information and preferences</p>
                     </div>
                   </div>
                   
                   <div className="space-y-6 mt-4">
 
                     <div className="group">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Fullname</label>
+                      <label className="block text-sm font-medium text-gray-50 mb-2">Fullname</label>
                       <div className="relative">
-                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors" size={20} />
+                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" size={20} />
                         <input
                           type="text"
                           value={data?.fullname ? formData.fullname : ""}
@@ -210,22 +210,22 @@ const Profile = () => {
                             setFormData({ ...formData, fullname: e.target.value})
                             setIsName(true)
                           }}
-                          className="w-full pl-12 pr-4 py-4 border border-gray-200 bg-gray-50/50 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all duration-300"
+                          className="w-full pl-12 pr-4 py-4 border border-gray-50 bg-white rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                           placeholder="Enter your fullname"
                         />
                       </div>
                     </div>
 
                     <div className="group">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                      <label className="block text-sm font-medium text-gray-50 mb-2">Username</label>
                       <Tooltip>
                         <TooltipTrigger>
                           <div className="relative">
-                            <AtSign className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 " size={20} />
+                            <AtSign className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
                             <input
                               type="text"
                               value={data?.username ? formData.username : ""}
-                              className="cursor-not-allowed pl-12 pr-4 py-4 border w-full border-gray-200/50 bg-gray-200/50 rounded-xl text-gray-900"
+                              className="cursor-not-allowed pl-12 pr-4 py-4 border w-full border-gray-50/50 bg-white rounded-xl text-gray-900"
                               disabled
                               placeholder="Choose a username"
                             />
@@ -238,9 +238,9 @@ const Profile = () => {
                     </div>
 
                     <div className="group">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                      <label className="block text-sm font-medium text-gray-50 mb-2">Email</label>
                       <div className="relative">
-                        <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors" size={20} />
+                        <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" size={20} />
                         <input
                           type="email"
                           value={data?.email ? formData.email : ""}
@@ -248,16 +248,16 @@ const Profile = () => {
                             setFormData({ ...formData, email: e.target.value})
                             setIsName(true)
                           }}
-                          className="w-full pl-12 pr-4 py-4 border border-gray-200 bg-gray-50/50 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all duration-300"
+                          className="w-full pl-12 pr-4 py-4 border border-gray-50 bg-white rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                           placeholder="Email"
                         />
                       </div>
                     </div>
 
                       <div className="group">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                      <label className="block text-sm font-medium text-gray-50 mb-2">New Password</label>
                       <div className="relative">
-                        {showPassword ? (<Lock onClick={() => setShowPassword(!showPassword)} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors" size={20} />) : (<Unlock onClick={() => setShowPassword(!showPassword)} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors" size={20} />)}
+                        {showPassword ? (<Lock onClick={() => setShowPassword(!showPassword)} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" size={20} />) : (<Unlock onClick={() => setShowPassword(!showPassword)} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" size={20} />)}
                         <input
                           type={showPassword ? "text" : "password"}
                           value={data?.password ? formData.password : ""}
@@ -265,7 +265,7 @@ const Profile = () => {
                             setFormData({ ...formData, password: e.target.value})
                             setIsPassword(true)
                           }}
-                          className="w-full pl-12 pr-4 py-4 border border-gray-200 bg-gray-50/50 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white transition-all duration-300"
+                          className="w-full pl-12 pr-4 py-4 border border-gray-50 bg-white rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                           placeholder="Enter new password"
                         />
                       </div>
@@ -285,8 +285,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-800/30 to-transparent rounded-full blur-3xl -z-10"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-indigo-900/30 to-transparent rounded-full blur-3xl -z-10"></div>
+          <div className="absolute bottom-3 right-3 lg:bottom-6 lg:right-6 w-3 h-3 bg-gradient-to-bl from-blue-900 to-transparent rounded-full animate-pulse"></div>
         </main>
     </div>
   )
