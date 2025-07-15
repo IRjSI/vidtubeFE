@@ -15,11 +15,13 @@ const Profile = () => {
   const [loading, setLoading] = useState(false)
   const [isPassword, setIsPassword] = useState(false)
   const [isName, setIsName] = useState(false)
+  const [isDescription, setIsDescription] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
-  const [data, setData] = useState<{username: string, fullname: string, email: string, password: string, avatar: string, coverImage: string}>()
+  const [data, setData] = useState<{username: string, description: string, fullname: string, email: string, password: string, avatar: string, coverImage: string}>()
   const [formData, setFormData] = useState({
     username: "us",
     fullname: "fn",
+    description: "",
     email: "@",
     password: "himani",
     avatar: "",
@@ -74,9 +76,18 @@ const Profile = () => {
         }
       })
 
-      isName && await axios.post(`${import.meta.env.VITE_BACKEND_URL}/users/update-details`, {
+      isName && await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/users/update-details`, {
         fullname: formData.fullname,
         email: formData.email
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      isDescription && await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/users/update-description`, {
+        oldDescription: data?.description,
+        newDescription: formData.description
       }, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -87,6 +98,8 @@ const Profile = () => {
     } finally {
       setLoading(false)
       setIsName(false)
+      setIsEditing(false)
+      setIsDescription(false)
       setIsPassword(false)
     }
   }
@@ -104,6 +117,7 @@ const Profile = () => {
         setData(res.data.data)
         setFormData({
           username: res.data.data.username,
+          description: res.data.data?.description,
           fullname: res.data.data.fullname,
           email: res.data.data.email,
           password: res.data.data.password,
@@ -171,7 +185,11 @@ const Profile = () => {
 
                     {isEditing ? (
                       <textarea
-                        value={"lorem24 lorem24 lorem24 lorem24lorem24lorem24 lorem24"}
+                        value={formData.description}
+                        onChange={(e) => {
+                          setFormData({ ...formData, description: e.target.value })
+                          setIsDescription(true)
+                        }}
                         className="w-full h-48 p-3 border border-blue-200 bg-blue-50/50 rounded-xl text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-black"
                         autoFocus
                         placeholder="Tell us about yourself..."
@@ -180,7 +198,7 @@ const Profile = () => {
                       <p
                         className="w-full h-48 p-3 text-sm text-black"
                       >
-                        lorem24 lorem24 lorem24 lorem24lorem24lorem24 lorem24
+                        {formData.description}
                       </p>
                     )}
                   </div>
@@ -207,7 +225,7 @@ const Profile = () => {
                           type="text"
                           value={data?.fullname ? formData.fullname : ""}
                           onChange={(e) => {
-                            setFormData({ ...formData, fullname: e.target.value})
+                            setFormData({ ...formData, fullname: e.target.value })
                             setIsName(true)
                           }}
                           className="w-full pl-12 pr-4 py-4 border border-gray-50 bg-white rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
@@ -245,7 +263,7 @@ const Profile = () => {
                           type="email"
                           value={data?.email ? formData.email : ""}
                           onChange={(e) => {
-                            setFormData({ ...formData, email: e.target.value})
+                            setFormData({ ...formData, email: e.target.value })
                             setIsName(true)
                           }}
                           className="w-full pl-12 pr-4 py-4 border border-gray-50 bg-white rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
@@ -262,7 +280,7 @@ const Profile = () => {
                           type={showPassword ? "text" : "password"}
                           value={data?.password ? formData.password : ""}
                           onChange={(e) => {
-                            setFormData({ ...formData, password: e.target.value})
+                            setFormData({ ...formData, password: e.target.value })
                             setIsPassword(true)
                           }}
                           className="w-full pl-12 pr-4 py-4 border border-gray-50 bg-white rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"

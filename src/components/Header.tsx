@@ -36,7 +36,7 @@ const Header = () => {
   }, [token])
 
   return (
-    <header className="sticky top-0 z-50 bg-transparent backdrop-blur-lg shadow-lg border-b border-slate-900">
+    <header className="sticky top-0 z-50 bg-transparent backdrop-blur-xl shadow-lg border-b border-slate-900">
       <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-4">
         <PlayIcon onClick={() => navigate('/')} className='cursor-pointer text-slate-500' size={38} />
 
