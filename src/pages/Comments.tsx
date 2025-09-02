@@ -2,12 +2,13 @@ import { AuthContext } from "@/context/authContext";
 import axios from "axios"
 import { Loader2, ThumbsDown, ThumbsUp } from "lucide-react";
 import { useContext, useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom";
 
 function Comments({ videoId }: any  ) {
     const [loading, setLoading] = useState(false);
     const [comments, setComments] = useState<any[]>([]);
     //@ts-ignore
-    const { token } = useContext(AuthContext);      
+    const { token, isLoggedIn } = useContext(AuthContext);      
 
     const [content, setContent] = useState('');
     // const [subState, setSubState] = useState('Subscribe');
@@ -47,11 +48,7 @@ function Comments({ videoId }: any  ) {
     const getComments = async () => {
         try {
             setLoading(true)
-            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/comments/all-comments/${videoId}`,{
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/comments/all-comments/${videoId}`)
             
             if (response.data.success) {
                 setComments(response.data.data);
@@ -75,7 +72,7 @@ function Comments({ videoId }: any  ) {
                     <div>
                         <p className='text-xl font-bold'>{comments.length} Comments</p>
                     </div>
-                    <form onSubmit={handleComment} className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-end mt-4">
+                    {isLoggedIn ? <form onSubmit={handleComment} className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-end mt-4">
                         <textarea
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
@@ -92,7 +89,16 @@ function Comments({ videoId }: any  ) {
                         >
                             Comment
                         </button>
-                    </form>
+                    </form>: (
+                        <div>
+                            <div>
+                                <Link to={"/login"} className="text-blue-500">
+                                    Login {" "}
+                                </Link>
+                                to comment
+                            </div>
+                        </div>
+                    )}
                 </div>
 
                 {comments.map((comment) => (

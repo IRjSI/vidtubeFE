@@ -10,6 +10,8 @@ const Upload = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState(''); 
     const [loading, setLoading] = useState(false); 
+    const [progress, setProgress] = useState<number>(0);
+
     //@ts-ignore
     const { token } = useContext(AuthContext);
 
@@ -23,9 +25,28 @@ const Upload = () => {
             const formData = new FormData();
           
             if (!video || !thumbnail) {
-                alert('Please upload');
-                return;
+              alert('Please upload');
+              return;
             }
+            // file-type validation
+            if (!video.type.startsWith("video/")) {
+              alert("Invalid video format");
+              return;
+            }
+            if (!thumbnail.type.startsWith("image/")) {
+              alert("Invalid thumbnail format");
+              return;
+            }
+            // Size validation
+            if (video.size > 900 * 1024 * 1024) { // 100 MB
+              alert("Video file too large (max 900MB)");
+              return;
+            }
+            if (thumbnail.size > 5 * 1024 * 1024) { // 5 MB
+              alert("Thumbnail too large (max 5MB)");
+              return;
+            }
+
             formData.append('video', video); 
             formData.append('thumbnail', thumbnail);
             formData.append('title', title);
@@ -37,6 +58,10 @@ const Upload = () => {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${token}`
+                    },
+                    onUploadProgress: (progressEvent) => {
+                      const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total!);
+                      setProgress(percent);
                     }
                 }
             )
@@ -141,10 +166,20 @@ const Upload = () => {
                 />
               </div>
             </div>
+            
+            {loading && (
+              <div className="w-full bg-gray-200 rounded-full h-3 mb-4">
+                <div
+                  className="bg-blue-500 h-3 rounded-full transition-all duration-150"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
+            )}
 
             <div>
               <button
                 type="submit"
+                disabled={loading}
                 className={`flex w-full justify-center gap-2 rounded-md ${loading ? "bg-indigo-500" : "bg-indigo-600"} px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mb-4`}
               >
                 <ArrowBigUpDash /> {loading ? "Uploading...(this may take a few moments)" : "Upload"}

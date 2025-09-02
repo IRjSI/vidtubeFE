@@ -47,7 +47,8 @@ const Signup = () => {
       );
 
       if (response.data.success) {
-        navigate('/login');
+        login(response.data.data.refreshToken)
+        navigate('/');
       }
     } catch (error) {
       console.error(error);
@@ -59,7 +60,7 @@ const Signup = () => {
   return (
     <div className="min-h-screen w-full flex bg-white/5 overflow-hidden">
 
-        <div
+      <div
         className="hidden md:block md:w-1/2 relative bg-cover bg-center min-h-screen"
         style={{
           backgroundImage:
@@ -97,7 +98,7 @@ const Signup = () => {
                   onChange={(e) => setAvatar(e.target.files?.[0] || null)}
                   id="avatar"
                   type="file"
-                  className="mt-1 w-full rounded-md bg-white/90 px-4 py-2 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm"
                   required
                 />
               </div>
@@ -108,7 +109,7 @@ const Signup = () => {
                   onChange={(e) => setCoverImage(e.target.files?.[0] || null)}
                   id="coverImage"
                   type="file"
-                  className="mt-1 w-full rounded-md bg-white/90 px-4 py-2 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm"
                   required
                 />
               </div>
@@ -123,7 +124,7 @@ const Signup = () => {
                 type="text"
                 id="username"
                 placeholder="Enter your username"
-                className="mt-1 w-full rounded-md bg-white/90 px-4 py-2 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm"
                 required
               />
             </div>
@@ -137,7 +138,7 @@ const Signup = () => {
                 type="text"
                 id="fullname"
                 placeholder="Your full name"
-                className="mt-1 w-full rounded-md bg-white/90 px-4 py-2 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm"
               />
             </div>
 
@@ -151,7 +152,7 @@ const Signup = () => {
                 id="email"
                 autoComplete="email"
                 placeholder="your@email.com"
-                className="mt-1 w-full rounded-md bg-white/90 px-4 py-2 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm"
                 required
               />
             </div>
@@ -166,7 +167,7 @@ const Signup = () => {
                 id="password"
                 autoComplete="new-password"
                 placeholder="••••••••"
-                className="mt-1 w-full rounded-md bg-white/90 px-4 py-2 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 outline-none"
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm"
                 required
               />
             </div>

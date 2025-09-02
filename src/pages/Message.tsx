@@ -34,13 +34,6 @@ const Message = () => {
             if (roomId !== "") {
                 setError("")
                 socket.emit("message", { room: roomId, message: msg, userId: theUser?._id, friendId })
-                // await axios.post(`${import.meta.env.VITE_BACKEND_URL}/users/add-message/${friendId}`,{
-                //     content: msg
-                // }, {
-                //     headers: {
-                //         Authorization: `Bearer ${token}`
-                //     }
-                // })
                 setMsg("")
             } else {
                 setError("select friend")
@@ -48,6 +41,7 @@ const Message = () => {
         } catch (error) {
             console.log(error)
         } finally {
+            
         }
     }
 
@@ -70,7 +64,7 @@ const Message = () => {
         }
         document.addEventListener('keydown', handleKeyPress);
         return () => {
-        document.removeEventListener('keydown', handleKeyPress);
+            document.removeEventListener('keydown', handleKeyPress);
         };
     }, [handleKeyPress, roomId]);
 

@@ -1,0 +1,27 @@
+/* Red progress bar */
+.vjs-youtube-skin .vjs-progress-holder .vjs-play-progress {
+  background-color: #ff0000 !important;
+}
+
+/* Red volume bar */
+.vjs-youtube-skin .vjs-volume-level {
+  background-color: #ff0000 !important;
+}
+
+/* Make the seek handle white */
+.vjs-youtube-skin .vjs-slider-handle {
+  background-color: #fff !important;
+  border-radius: 50%;
+}
+
+/* Remove background on control bar */
+/* Make the control bar stretch full width */
+.vjs-youtube-skin .vjs-control-bar {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.6) !important;
+}
+

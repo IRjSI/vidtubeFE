@@ -22,11 +22,12 @@ import Profile from './pages/Profile';
 function App() {
 
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white min-h-screen font-sans">
-      {/* {!isHeaderVisible && <Header />} */}
+    <div className="text-white min-h-screen font-sans">
       <Header />
       <div className="">
         <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
@@ -41,8 +42,6 @@ function App() {
           <Route path="/tweet" element={<Tweet />} />
           <Route path="/message" element={<Message />} />
           <Route path="/show-tweets" element={<AllTweets />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="/insights" element={<ChannelInspect />} />
         </Routes>
       </div>

@@ -15,7 +15,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif; /* Replace 'Inter' with your desired font */
+  font-family: 'Inter', sans-serif;
 }
 
 @layer base {

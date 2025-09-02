@@ -37,13 +37,13 @@ const LikedVideos = () => {
               return (
                   <div
                       key={ind}
-                      className="grid grid-cols-[2fr_9fr_1fr] gap-4 relative cursor-pointer rounded-lg hover:bg-white/5 transition p-2 mb-2"
+                      className="grid grid-cols-1 sm:grid-cols-[2fr_8fr] gap-4 relative cursor-pointer rounded-lg hover:bg-white/5 transition p-2 mb-2"
                       onClick={() => videoClick(id)}
                   >
-                      <div className="relative rounded-lg mb-2">
+                      <div className="relative rounded-lg mb-2 sm:w-64 sm:h-40 w-full h-72">
                           <img
                               src={thumbnail}
-                              className="w-64 h-40 rounded-lg object-cover"
+                              className="rounded-lg object-cover h-full w-full"
                               alt="thumbnail"
                           />
                           <div className="absolute bottom-2 right-2 bg-black/80 font-semibold text-white text-xs px-2 py-1 rounded">

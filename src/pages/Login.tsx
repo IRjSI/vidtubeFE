@@ -1,9 +1,8 @@
-import { AuthContext } from '@/context/authContext'
+import { AuthContext, AuthContextType } from '@/context/authContext'
 import axios from 'axios'
 import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-// import GoogleAuth from './GoogleLogin'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -13,8 +12,7 @@ const Login = () => {
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
-  //@ts-ignore
-  const { login } = useContext(AuthContext)
+  const { login } = useContext(AuthContext) as AuthContextType
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -40,7 +38,7 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen w-full flex bg-white/5 overflow-hidden">
+    <div className="h-[91vh] w-full flex bg-white/5 overflow-hidden">
 
       <div
         className="hidden md:block md:w-1/2 relative bg-cover bg-center min-h-screen"

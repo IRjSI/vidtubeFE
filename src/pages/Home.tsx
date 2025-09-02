@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import LandingPage from './LandingPage';
 import { AuthContext } from '@/context/authContext';
 import Sidebar from '@/components/Sidebar';
 import axios from 'axios';
@@ -27,14 +26,7 @@ const Home = () => {
     e.preventDefault();
     try {
         const lowerCaseUsername = username.toLowerCase();
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/get-user-search/${lowerCaseUsername}`,
-            {
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`
-              }
-            }
-        );
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users/get-user-search/${lowerCaseUsername}`);
             
         if (response.data.success) {          
           // this is how to pass props while navigating (use useLocation hook in that component)
@@ -52,21 +44,17 @@ const Home = () => {
   }
 
   useEffect(() => {
-    if (!token) return;    
+    // if (!token) return;    
 
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/videos/get-videos`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(`${import.meta.env.VITE_BACKEND_URL}/videos/get-videos`)
       .then((response) => {
         setVideos(response.data.data.videos)
       })
       .catch((error) => console.error('Error fetching videos:', error));
   }, [token]);
 
-  if (!isLoggedIn) return <LandingPage />;
+  // if (!isLoggedIn) return <LandingPage />;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-[1fr_3fr] lg:grid-cols-[1fr_5fr] gap-4 mt-6 px-4 min-h-[85vh]">
@@ -97,7 +85,7 @@ const Home = () => {
           {videos.length === 0 ? (
             <div className="text-gray-400">No videos found.</div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 overflow-y-auto no-scrollbar max-h-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 overflow-y-auto no-scrollbar max-h-full">
               {videos.map((video, ind) => {
                 const id = video._id;
                 const user = video.owner;
@@ -111,10 +99,10 @@ const Home = () => {
                     className="flex flex-col relative cursor-pointer rounded-lg hover:bg-white/5 transition p-2"
                     onClick={() => videoClick(id)}
                   >
-                    <div className="relative w-full rounded-lg mb-2">
+                    <div className="relative rounded-lg mb-2 sm:w-64 sm:h-40 w-full h-72">
                       <img
                         src={thumbnail}
-                        className="w-full h-40 rounded-lg object-cover"
+                        className="rounded-lg object-cover w-full h-full"
                         alt="thumbnail"
                       />
                       <div className="absolute bottom-2 right-2 bg-black/80 font-semibold text-white text-xs px-2 py-1 rounded">
